@@ -37,7 +37,10 @@ jobs:
       - name: Pull Julia cache
         uses: julia-actions/cache@v1
       - name: Install documentation dependencies
-        run: DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' && julia --project=docs -e 'using Pkg; pkg"dev ."; Pkg.instantiate(); Pkg.precompile(); Pkg.status()'
+        run: >
+          cd docs;
+          DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' 
+          julia --project=. -e 'using Pkg; pkg"dev .."; Pkg.instantiate(); Pkg.precompile(); Pkg.status()'
       #- name: Creating new mds from src
       - name: Build and deploy docs
         uses: julia-actions/julia-docdeploy@v1
