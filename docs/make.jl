@@ -32,7 +32,6 @@ makedocs(;
 deploydocs(;
     repo="github.com/brian-dellabetta/Fusion.jl",
     target="build",
-    push_preview=true,
     branch = "gh-pages",
     devbranch = "main"
 )
