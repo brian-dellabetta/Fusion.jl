@@ -3,7 +3,7 @@ using Documenter, DocumenterVitepress
 # using YourPackage
 
 makedocs(;
-    modules=[YourPackage],
+    # modules=[YourPackage],
     authors="Brian Dellabetta",
     repo="https://github.com/brian-dellabetta/fusion",
     sitename="Fusion",

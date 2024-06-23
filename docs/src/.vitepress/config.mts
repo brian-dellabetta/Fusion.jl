@@ -35,12 +35,9 @@ export default defineConfig({
         detailedView: true
       }
     },
-    // nav: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
-    // sidebar: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
-    // editLink: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
-    // socialLinks: [
-    //   { icon: 'github', link: 'REPLACE_ME_DOCUMENTER_VITEPRESS' }
-    // ],
+    nav: [],
+    sidebar: [],
+    editLink: { pattern: "https://github.com/brian-dellabetta/fusion/tree/main/docs/:path" },
     footer: {
       message: 'Made with <a href="https://luxdl.github.io/DocumenterVitepress.jl/dev/" target="_blank"><strong>DocumenterVitepress.jl</strong></a><br>',
       copyright: `© Copyright ${new Date().getUTCFullYear()}.`
