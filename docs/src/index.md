@@ -2,6 +2,6 @@
 
 Hello world!
 
-<!-- ```@autodocs
-Modules=[YourPackage]
-``` -->
+```@autodocs
+Modules=[Fusion]
+```
