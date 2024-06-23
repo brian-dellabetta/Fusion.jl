@@ -5,13 +5,13 @@ import footnote from "markdown-it-footnote";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/',
-  title: 'Fusion Concept',
-  description: '',
+  base: 'REPLACE_ME_DOCUMENTER_VITEPRESS', // TODO: replace this in makedocs!
+  title: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
+  description: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
   lastUpdated: true,
   cleanUrls: true,
-  // outDir: 'REPLACE_ME_DOCUMENTER_VITEPRESS', // This is required for MarkdownVitepress to work correctly...
-  // head: [['link', { rel: 'icon', href: 'REPLACE_ME_DOCUMENTER_VITEPRESS_FAVICON' }]],
+  outDir: 'REPLACE_ME_DOCUMENTER_VITEPRESS', // This is required for MarkdownVitepress to work correctly...
+  head: [['link', { rel: 'icon', href: 'REPLACE_ME_DOCUMENTER_VITEPRESS' }]],
   ignoreDeadLinks: true,
 
   markdown: {
@@ -28,16 +28,19 @@ export default defineConfig({
   },
   themeConfig: {
     outline: 'deep',
-    // logo: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
+    logo: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
     search: {
       provider: 'local',
       options: {
         detailedView: true
       }
     },
-    nav: [],
-    sidebar: [],
-    editLink: { pattern: "https://github.com/brian-dellabetta/fusion/tree/main/docs/:path" },
+    nav: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
+    sidebar: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
+    editLink: 'REPLACE_ME_DOCUMENTER_VITEPRESS',
+    socialLinks: [
+      { icon: 'github', link: 'REPLACE_ME_DOCUMENTER_VITEPRESS' }
+    ],
     footer: {
       message: 'Made with <a href="https://luxdl.github.io/DocumenterVitepress.jl/dev/" target="_blank"><strong>DocumenterVitepress.jl</strong></a><br>',
       copyright: `© Copyright ${new Date().getUTCFullYear()}.`
