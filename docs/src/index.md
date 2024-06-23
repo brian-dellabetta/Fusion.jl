@@ -1,7 +1,7 @@
-# YourPackage.jl
+# Fusion
 
-Documentation for `YourPackage.jl`.
+Hello world!
 
-```@autodocs
+<!-- ```@autodocs
 Modules=[YourPackage]
-```
+``` -->
