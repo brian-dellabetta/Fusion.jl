@@ -18,7 +18,6 @@ makedocs(;
     format=DocumenterVitepress.MarkdownVitepress(
         repo = "github.com/brian-dellabetta/Fusion.jl",
         devbranch = "main",
-        deploy_url = "brian-dellabetta.github.io/Fusion.jl",
     ),
     draft = false,
     source = "src",
