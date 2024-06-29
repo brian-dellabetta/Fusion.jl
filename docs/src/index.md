@@ -1,12 +1,11 @@
 ````@raw html
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: Fusion
   text: 
-  tagline: Interactive data visualizations and plotting in Julia 
+  tagline: Why a brand new state of matter provides the perfect environment to realize a 50-year-old idea for cold fusion -- one that promises to be far easier to sustain than <b>any</b> of the current leading candidates for fusion power.
   image:
     src: logo.png
     alt: Fusion
@@ -20,9 +19,26 @@ hero:
 ---
 ````
 
-# Fusion
+# Introduction 
 
-Makie turns your data into beautiful images or animations, such as this one:
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms, but the graphical aids should hopefully show the key points are rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
+
+The key points are covered in the following sections:
+
+1. [Basics of Nuclear Fusion](#Basics-of-Nuclear-Fusion)
+2. [The 50-Year-Old Idea](#The-50-Year-Old-Idea) for nuclear fusion, why it is preferable to current leading candidates, and why it ultimately failed to work.
+3. [The New State of Matter](#The-New-State-of-Matter) and why it is well-suited to succeed.
+4. [Some Caveats](#Some-Caveats)
+5. [Open Questions](#Open-Questions)
+
+## Basics of Nuclear Fusion
+
+Fusion occurs when two atoms come close enough together for the strong nuclear force
+
+## The 50-Year-Old Idea
+
+() that the The idea is called "Colliding Beam Fusion"
+
 
 ::: details Show me the code
 
@@ -80,6 +96,12 @@ set_theme!() # hide
 <video autoplay loop muted playsinline controls src="./lorenz.mp4" style="max-height: 40vh;"/>
 ```
 
-## Installation
+## The New State of Matter
 
 Lorem ipsum
+
+## Some Caveats
+
+Lorem ipsum
+
+## Open Questions
