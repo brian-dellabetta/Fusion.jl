@@ -1,7 +1,5 @@
 using GLMakie
 
-include("utils.jl")
-
 Base.@kwdef mutable struct Lorenz
     dt::Float64 = 0.01
     σ::Float64 = 10
