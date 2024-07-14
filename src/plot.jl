@@ -51,22 +51,36 @@ let
     a2 = Point3f(a0 * sqrt(3) / 2, -a0 / 2, 0)
 
     ps::Array{NTuple{2,Point3f}} = []
-    n_rows = 5
-    n_cols = 7
+    n_rows = 7
+    n_cols = 12
     for col_idx in 0:n_cols-1, row_idx in 0:n_rows-1
         #odd rows
-        p1 = Point3f(col_idx * a0 * sqrt(3), row_idx * a0 * (1 + sqrt(3)), origin[2])
-        push!(ps, (p1, p1 + a1))
-        push!(ps, (p1, p1 + a2))
-        push!(ps, (p1, p1 + a2 .* (-1, 1, 1)))
+        p1 = Point3f(
+            (col_idx * a0 * sqrt(3)) - ((X[2] - X[1]) * 0.25),
+            (row_idx * a0 * (1 + sqrt(3))) - (Y[2] - Y[1]) * 0.25,
+            origin[2]
+        )
+        if row_idx != n_rows - 1
+            push!(ps, (p1, p1 + a1))
+        end
+        if row_idx != n_rows - 1 || col_idx != 0
+            push!(ps, (p1, p1 + a2))
+        end
+        if col_idx != 0
+            push!(ps, (p1, p1 + a2 .* (-1, 1, 1)))
+        end
         #even rows
         p2 = p1 - a1 + a2
         push!(ps, (p2, p2 + a1))
-        push!(ps, (p2, p2 + a2))
-        push!(ps, (p2, p2 + a2 .* (-1, 1, 1)))
+        if (col_idx != n_cols - 1)
+            push!(ps, (p2, p2 + a2))
+        end
+        if (col_idx != 0 || row_idx != 0)
+            push!(ps, (p2, p2 + a2 .* (-1, 1, 1)))
+        end
     end
 
-    linesegments!(ps, color=:white)
+    linesegments!(ps, color=:grey95, linewidth=0.5)
 end
 
 
