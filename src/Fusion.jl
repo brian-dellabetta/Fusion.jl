@@ -1,5 +1,6 @@
 module Fusion
 
-# include("plot.jl")
+include("utils.jl")
+include("plot.jl")
 
 end
