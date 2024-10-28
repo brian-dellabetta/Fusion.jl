@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: Ultra-Cold Fusion?
+  name: (Ultra-)Cold Fusion?
   text: 
   tagline: Why a new state of matter is the perfect environment to realize a 50-year-old idea for cold fusion -- one that promises to be far cheaper and easier to sustain than <b>any</b> of the current leading candidates.
   image:
