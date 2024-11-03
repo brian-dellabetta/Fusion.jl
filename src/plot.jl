@@ -18,7 +18,7 @@ struct Lattice
         #domain
         domain::Line3f,
         #lattice constant
-        a0::Float32=6.0f0,
+        a0::Float32=4.0f0,
     )
         X = (domain[1][1], domain[2][1])
         Y = (domain[1][2], domain[2][2])
@@ -79,18 +79,26 @@ struct Lattice
 
                 #edge points
                 if x_idx == 0
-                    push!(top_points, p1)
-                    push!(top_points, p1 + d1)
-                    push!(top_points, p1 + d2 - d1)
+                    push!(top_points, p2)
+                    push!(top_points, p2 + d1)
+                    if y_idx != ny - 1
+                        push!(top_points, p1)
+                        push!(top_points, p1 + d1)
+                    end
                 elseif y_idx == ny - 1
                     push!(right_points, p1)
-                    push!(right_points, p2)
-                elseif x_idx == nx - 1
-                    push!(bottom_points, p1)
+                    push!(right_points, p1 + d2)
+                end
+                if x_idx == nx - 1
+                    push!(bottom_points, p2 + d3)
                     push!(bottom_points, p2)
+                    if y_idx != ny - 1
+                        push!(bottom_points, p1 + d2)
+                        push!(bottom_points, p1)
+                    end
                 elseif y_idx == 0
-                    push!(left_points, p1)
                     push!(left_points, p2)
+                    push!(left_points, p2 + d2)
                 end
             end
             push!(points, odd_points)
@@ -99,8 +107,7 @@ struct Lattice
 
         new(
             points,
-            # vcat(top_points, right_points, bottom_points[end:-1:1], left_points[end:-1:1]),
-            top_points[1:3],
+            vcat(top_points, right_points, bottom_points[end:-1:1], left_points[end:-1:1]),
             lines
         )
     end
@@ -125,33 +132,43 @@ function step!(a::Atom, l::Lattice)
 end
 
 
+spin_up_atom = Atom()
+spin_down_atom = Atom(is_spin_up=false)
+tails = Observable(Point3f[])
+atoms = Observable(Point3f[])
+
 domain = (Point3f(-30.0, -30.0, -10.0), Point3f(30.0, 30.0, 10.0))
 lattice_domain = (Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0))
-attractor = Atom()
 lattice = Lattice(lattice_domain)
-points = Observable(Point3f[])
-colors = Observable(Int[])
 
+colors = Observable(Int[])
 set_theme!(theme_black())
 
-fig, ax, l = scatter(points, color=colors,
-    colormap=:inferno, transparency=true,
+fig, ax, l = linesegments(
+    lattice.lines,
+    color=:grey95,
+    linewidth=0.5,
+    transparency=true,
     axis=(; type=Axis3, protrusions=(0, 0, 0, 0),
-        viewmode=:fit, limits=(domain[1][1], domain[2][1], domain[1][2], domain[2][2], domain[1][3], domain[2][3])))
+        viewmode=:fit, limits=(domain[1][1], domain[2][1], domain[1][2], domain[2][2], domain[1][3], domain[2][3]))
+)
 # ax.xticklabelsvisible = ax.yticklabelsvisible = ax.zticklabelsvisible = false
 # ax.xlabel = ax.ylabel = ax.zlabel = ""
 
-linesegments!(lattice.lines, color=:grey95, linewidth=0.5)
+lines!(tails, color=colors, transparency=true)
+scatter!(atoms, color=:yellow, markersize=10)
 
 record(fig, "lorenz.mp4", 1:120) do frame_idx
     for i in 1:50
-        step!(attractor, lattice)
-        push!(points[], attractor.r)
+        step!(spin_up_atom, lattice)
+        push!(tails[], spin_up_atom.r)
+        atoms[] = [spin_up_atom.r]
+        step!(spin_down_atom, lattice)
         push!(colors[], i)
     end
-    ax.azimuth[] = 1.7pi + 0.8 * sin(2pi * frame_idx / 120)
-    ax.elevation[] = pi / 5
-    notify(points)
+    ax.azimuth[] = 1.7pi + 0.5 * sin(2pi * frame_idx / 120)
+    ax.elevation[] = pi / 6
+    notify(tails)
     notify(colors)
     # l.colorrange = (0, frame_idx / 1000)
 end
