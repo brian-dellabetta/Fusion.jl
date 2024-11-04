@@ -1,15 +1,23 @@
 using GLMakie
-
+using DataStructures: CircularBuffer
 
 Line3f = Tuple{Point3f,Point3f}
 
+TAIL_LENGTH = 10
+
 Base.@kwdef mutable struct Atom
-    r::Point3f = Point3f(0.0, 0.0, 0.0)
     edge_idx::Integer = 1
     is_spin_up::Bool = true
+    r::Observable{Point3f} = Observable(Point3f(0.0, 0.0, 0.0))
+    tail::Observable{CircularBuffer{Point3f}} = begin
+        t = CircularBuffer{Point3f}(TAIL_LENGTH)
+        fill!(t, r[])
+        Observable(t)
+    end
 end
 
 struct Lattice
+    a0::Float32
     points::Vector{Vector{Point3f}}
     edge_points::Vector{Point3f}
     lines::Vector{Line3f}
@@ -106,6 +114,7 @@ struct Lattice
         end
 
         new(
+            a0,
             points,
             vcat(top_points, right_points, bottom_points[end:-1:1], left_points[end:-1:1]),
             lines
@@ -128,21 +137,21 @@ function step!(a::Atom, l::Lattice)
         end
     end
 
-    a.r = l.edge_points[a.edge_idx]
+    a.r[] = l.edge_points[a.edge_idx]
+    push!(a.tail[], a.r[])
+    a.tail[] = a.tail[] #to trigger notify
 end
+step!(as::AbstractArray{<:Atom}, l::Lattice) = [step!(a, l) for a in as]
 
 
-spin_up_atom = Atom()
-spin_down_atom = Atom(is_spin_up=false)
-tails = Observable(Point3f[])
-atoms = Observable(Point3f[])
+## Main run
+set_theme!(theme_black())
+
 
 domain = (Point3f(-30.0, -30.0, -10.0), Point3f(30.0, 30.0, 10.0))
 lattice_domain = (Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0))
 lattice = Lattice(lattice_domain)
 
-colors = Observable(Int[])
-set_theme!(theme_black())
 
 fig, ax, l = linesegments(
     lattice.lines,
@@ -155,20 +164,32 @@ fig, ax, l = linesegments(
 # ax.xticklabelsvisible = ax.yticklabelsvisible = ax.zticklabelsvisible = false
 # ax.xlabel = ax.ylabel = ax.zlabel = ""
 
-lines!(tails, color=colors, transparency=true)
-scatter!(atoms, color=:yellow, markersize=10)
+# spin up atoms
+up_atoms = [Atom()]
+up_color = to_color(:red)
+# spin down atoms
+down_atoms = [Atom(is_spin_up=false)]
+down_color = to_color(:blue)
+
+let
+    tailcol = [RGBAf(up_color.r, up_color.g, up_color.b, (i / TAIL_LENGTH)^2) for i in 1:TAIL_LENGTH]
+    for atom in up_atoms
+        scatter!(atom.r, color=up_color, markersize=10)
+        lines!(atom.tail, color=tailcol, transparency=true, linewidth=4)
+    end
+end
+let
+    tailcol = [RGBAf(down_color.r, down_color.g, down_color.b, (i / TAIL_LENGTH)^2) for i in 1:TAIL_LENGTH]
+    for atom in down_atoms
+        scatter!(atom.r, color=down_color, markersize=10)
+        lines!(atom.tail, color=tailcol, transparency=true, linewidth=4)
+    end
+end
 
 record(fig, "lorenz.mp4", 1:120) do frame_idx
     for i in 1:50
-        step!(spin_up_atom, lattice)
-        push!(tails[], spin_up_atom.r)
-        atoms[] = [spin_up_atom.r]
-        step!(spin_down_atom, lattice)
-        push!(colors[], i)
+        step!(vcat(up_atoms, down_atoms), lattice)
     end
     ax.azimuth[] = 1.7pi + 0.5 * sin(2pi * frame_idx / 120)
     ax.elevation[] = pi / 6
-    notify(tails)
-    notify(colors)
-    # l.colorrange = (0, frame_idx / 1000)
 end
