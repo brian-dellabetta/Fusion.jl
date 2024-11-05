@@ -25,14 +25,16 @@ This post is designed to support the above claim approachably and with some grap
 
 Physicists have recently realized a new topological phase of matter by careful preparation of an optical honeycomb lattice.[^a] A signature of the phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an atom were placed into that edge mode, it would move along the boundary:
 
-::: details Show me the code
 
-```@example
+```@setup
 using Fusion
 
-plot_record([Atom()], Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 2.0f0), "single_spin_up.mp4")
+plot_record(
+  [Atom(r=Point3f(-20.0, -20.0, 10.0))],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
+  "single_spin_up.mp4"
+)
 ```
-:::
 
 ```@raw html
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 40vh;"/>
