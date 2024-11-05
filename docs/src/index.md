@@ -19,9 +19,26 @@ hero:
 ---
 ````
 
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
+
 # Introduction 
 
-This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms, but it should hopefully show the key points are rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
+Physicists have recently realized a new topological phase of matter by careful preparation of an optical honeycomb lattice.[^a] A signature of the phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an atom were placed into that edge mode, it would move along the boundary:
+
+::: details Show me the code
+
+```@example
+using Fusion
+
+plot_record([Atom()], Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 2.0f0), "single_spin_up.mp4")
+```
+:::
+
+```@raw html
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 40vh;"/>
+```
+
+
 
 The key points are covered in the following sections:
 
@@ -55,61 +72,7 @@ The alternative is rather simple -- fusion is a reaction between two individual 
 
 Colliding Beam Fusion dates back to at least the 
 
-::: details Show me the code
 
-```@example
-using GLMakie
-GLMakie.activate!() # hide
-
-Base.@kwdef mutable struct Lorenz
-    dt::Float64 = 0.01
-    σ::Float64 = 10
-    ρ::Float64 = 28
-    β::Float64 = 8/3
-    x::Float64 = 1
-    y::Float64 = 1
-    z::Float64 = 1
-end
-
-function step!(l::Lorenz)
-    dx = l.σ * (l.y - l.x)
-    dy = l.x * (l.ρ - l.z) - l.y
-    dz = l.x * l.y - l.β * l.z
-    l.x += l.dt * dx
-    l.y += l.dt * dy
-    l.z += l.dt * dz
-    Point3f(l.x, l.y, l.z)
-end
-
-attractor = Lorenz()
-
-points = Observable(Point3f[])
-colors = Observable(Int[])
-
-set_theme!(theme_black())
-
-fig, ax, l = lines(points, color = colors,
-    colormap = :inferno, transparency = true, 
-    axis = (; type = Axis3, protrusions = (0, 0, 0, 0), 
-              viewmode = :fit, limits = (-30, 30, -30, 30, 0, 50)))
-
-record(fig, "lorenz.mp4", 1:120) do frame
-    for i in 1:50
-        push!(points[], step!(attractor))
-        push!(colors[], frame)
-    end
-    ax.azimuth[] = 1.7pi + 0.3 * sin(2pi * frame / 120)
-    notify(points)
-    notify(colors)
-    l.colorrange = (0, frame)
-end
-set_theme!() # hide
-```
-:::
-
-```@raw html
-<video class="marginauto" autoplay loop muted playsinline controls src="./lorenz.mp4" style="max-height: 40vh;"/>
-```
 
 # The New State of Matter
 
@@ -123,5 +86,6 @@ Lorem ipsum
 
 ## Citations
 
+[^a]: https://arxiv.org/abs/2304.01980
 [^1]: [Per kg, the combustion of hydrogen and oxygen yields 13 MJ, whereas the fusion of deuterium and tritium yields 3.6 x 10^8 MJ](https://ntrs.nasa.gov/api/citations/20160010608/downloads/20160010608.pdf)
 [^2]: [Inertial confinement fusion](https://en.wikipedia.org/wiki/Inertial_confinement_fusion), [magnetized target fusion](https://en.wikipedia.org/wiki/Magnetized_target_fusion), [inertial electrostatic confinement](https://en.wikipedia.org/wiki/Inertial_electrostatic_confinement) and the [Tokamak](https://en.wikipedia.org/wiki/Tokamak) design all reside in the family of thermonuclear fusion reactors. The NIF project uses inertial confinement fusion, the ITER project is a Tokamak design.
