@@ -1,6 +1,6 @@
 
 struct Lattice
-    a0::Float32
+    a0::Real
     points::Vector{Vector{Point3f}}
     edge_points::Vector{Point3f}
     lines::Vector{Line3f}
@@ -9,7 +9,7 @@ struct Lattice
         #domain
         domain::Line3f,
         #lattice constant
-        a0::Float32=2.0f0,
+        a0::Real=2.0f0,
     )
         X = (domain[1][1], domain[2][1])
         Y = (domain[1][2], domain[2][2])

@@ -16,21 +16,21 @@ makedocs(;
     repo="https://github.com/brian-dellabetta/Fusion.jl",
     sitename="Fusion",
     format=DocumenterVitepress.MarkdownVitepress(
-        repo = "github.com/brian-dellabetta/Fusion.jl",
-        devbranch = "main",
+        repo="github.com/brian-dellabetta/Fusion.jl",
+        devbranch="main",
     ),
-    draft = false,
-    source = "src",
-    build = "build",
+    draft=false,
+    source="src",
+    build="build",
     pages=[
         "Home" => "index.md",
     ],
-    warnonly = true,
+    warnonly=true,
 )
 
 deploydocs(;
     repo="github.com/brian-dellabetta/Fusion.jl",
     target="build",
-    branch = "gh-pages",
-    devbranch = "main"
+    branch="gh-pages",
+    devbranch="main"
 )
