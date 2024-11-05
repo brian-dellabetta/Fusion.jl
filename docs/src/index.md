@@ -5,17 +5,17 @@ layout: home
 hero:
   name: (Ultra-)Cold Fusion?
   text: 
-  tagline: Why a new state of matter is the perfect environment to realize a 50-year-old idea for cold fusion -- one that promises to be far cheaper and easier to sustain than <b>any</b> of the current leading fusion reactor designs.
+  tagline: Why a new state of matter is the perfect environment to realize a 50-year-old idea for cold fusion -- one that promises to be far cheaper and easier to sustain than <b>any</b> of the current leading candidates.
   image:
     src: logo.png
     alt: Fusion
-  actions:
+  <!-- actions:
     - theme: brand
       text: Getting started
       link: /tutorials/getting-started
     - theme: alt
       text: View on Github
-      link: https://github.com/brian-dellabetta/Fusion.jl
+      link: https://github.com/brian-dellabetta/Fusion.jl -->
 ---
 ````
 
@@ -41,18 +41,19 @@ Fusion occurs when two atoms come in close enough proximity to combine. The most
 
 This reaction, if efficiently achievable, is the holy grail of clean energy. Helium is not a greenhouse gas, not radioactive, and escapes from Earth's atmosphere over time. Output yield is *ten million times* larger than combustion.[^1] Deuterium is abundant, and (if fusion were efficiently achievable) can be fused to create tritium, which is otherwise rare.
 
-The caveat, of course, is that this is really difficult to achieve. In order to bring deterium and tritium (which are positively charged and repel one another) close enough together to fuse, the current leading designs aim to compress and heat fuel pellets to immense pressures and temperatures (~100 million degrees Kelvin).[^2] It is reasonable to focus on this class of fusion reactor -- this is, after all, how fusion occurs in stars. But in spite of exciting recent breakthroughs, the challenges associated with creating an "artifical sun on earth" abound:
+The caveat, of course, is that this is really difficult to achieve. In order to bring atomic nuclei (which are positively charged and repel one another) close enough together to fuse, the current leading designs aim to compress and heat fusible atoms to immense pressures and temperatures (~100 million degrees Kelvin) to trigger fusion.[^2] It is reasonable to consdier this class of fusion reactor -- this is, after all, how fusion occurs in stars. However, in spite of exciting recent breakthroughs, the challenges associated with creating an "artifical sun on earth" abound:
 
 - The International Thermonuclear Experimental Reactor (ITER), a multi-country initiative to build a test reactor in France by 2035, has [an expected cost of \$22B that could swell up to \$65B](https://pubs.aip.org/physicstoday/Online/4990/ITER-disputes-DOE-s-cost-estimate-of-fusion), according to the U.S. Department of Energy.
-- In the U.S., the National Ignition Facility (NIF) [achieved fusion ignition](https://www.llnl.gov/article/49306/lawrence-livermore-national-laboratory-achieves-fusion-ignition), but [at a total cost of \$3.5B](https://lasers.llnl.gov/about/faqs#nif_cost) its path to a sustainable nuclear reactor with a net-positive harvested energy remains unclear. 
+- In the U.S., the National Ignition Facility (NIF) [recently achieved fusion ignition](https://www.llnl.gov/article/49306/lawrence-livermore-national-laboratory-achieves-fusion-ignition) and generated more energy than it required to operate, but [at a total cost of \$3.5B](https://lasers.llnl.gov/about/faqs#nif_cost) its path to a sustainable nuclear reactor with a net-positive harvested energy remains unclear. 
 
-These numbers are eye-watering. Hundreds of millions of degrees, tens of billions of dollars *for an experiment*. Thermonuclear fusion is a brute force approach, but it's not the only game in town. A more elegant proposal for fusion exists, and has for some time.
+Hundreds of millions of degrees, tens of billions of dollars *for an experiment*. The numbers are eye-watering. Thermonuclear fusion is a brute-force approach rife with challenges, but it's not the only option. A more elegant design exists, and has for some time.
 
 
 # The 50-Year-Old Idea
 
-() that the The idea is called "Colliding Beam Fusion"
+The alternative is rather simple -- fusion is a reaction between two individual atoms, just collide them together. If they are travelling towards one another fast enough, they can overcome their electrostatic repulsion and fuse. This class of fusion power designs is known as [Colliding Beam Fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion)
 
+Colliding Beam Fusion dates back to at least the 
 
 ::: details Show me the code
 
