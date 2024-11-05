@@ -26,7 +26,7 @@ struct Lattice
         #domain
         domain::Line3f,
         #lattice constant
-        a0::Float32=4.0f0,
+        a0::Float32=2.0f0,
     )
         X = (domain[1][1], domain[2][1])
         Y = (domain[1][2], domain[2][2])
@@ -141,8 +141,11 @@ function step!(a::Atom, l::Lattice)
     push!(a.tail[], a.r[])
     a.tail[] = a.tail[] #to trigger notify
 end
-step!(as::AbstractArray{<:Atom}, l::Lattice) = [step!(a, l) for a in as]
-
+function step!(as::AbstractArray{<:Atom}, l::Lattice; n_steps::Integer=1)
+    for _ = 1:n_steps
+        [step!(a, l) for a in as]
+    end
+end
 
 ## Main run
 set_theme!(theme_black())
@@ -161,7 +164,7 @@ fig, ax, l = linesegments(
     axis=(; type=Axis3, protrusions=(0, 0, 0, 0),
         viewmode=:fit, limits=(domain[1][1], domain[2][1], domain[1][2], domain[2][2], domain[1][3], domain[2][3]))
 )
-# ax.xticklabelsvisible = ax.yticklabelsvisible = ax.zticklabelsvisible = false
+ax.xticklabelsvisible = ax.yticklabelsvisible = ax.zticklabelsvisible = false
 # ax.xlabel = ax.ylabel = ax.zlabel = ""
 
 # spin up atoms
@@ -171,6 +174,10 @@ up_color = to_color(:red)
 down_atoms = [Atom(is_spin_up=false)]
 down_color = to_color(:blue)
 
+#initialize
+for idx = 1:TAIL_LENGTH
+    step!(vcat(up_atoms, down_atoms), lattice)
+end
 let
     tailcol = [RGBAf(up_color.r, up_color.g, up_color.b, (i / TAIL_LENGTH)^2) for i in 1:TAIL_LENGTH]
     for atom in up_atoms
@@ -187,9 +194,7 @@ let
 end
 
 record(fig, "lorenz.mp4", 1:120) do frame_idx
-    for i in 1:50
-        step!(vcat(up_atoms, down_atoms), lattice)
-    end
+    step!(vcat(up_atoms, down_atoms), lattice; n_steps=7)
     ax.azimuth[] = 1.7pi + 0.5 * sin(2pi * frame_idx / 120)
     ax.elevation[] = pi / 6
 end
