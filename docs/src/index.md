@@ -19,11 +19,11 @@ hero:
 ---
 ````
 
-This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases of matter"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
 
 # Introduction 
 
-Physicists have recently realized a new topological phase of matter by careful preparation of an optical honeycomb lattice.[^a] A signature of the phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an atom were placed into that edge mode, it would move along the boundary:
+Physicists have recently realized a new topological phase of matter by careful preparation of an optical lattice (i.e. a lattice formed of laser light).[^a] One signature of this topological phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultra cold atom were placed into that edge mode, it would propagate along the boundary:
 
 
 ```@setup
@@ -35,10 +35,72 @@ plot_record(
   "single_spin_up.mp4"
 )
 ```
-
 ```@raw html
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 40vh;"/>
 ```
+
+Atoms in these edge modes have some interesting properties. They behave as if they are massless, allowing for high velocity at low or even zero energy[^c], and are confined to the one-dimensional boundary of the topological phase.
+
+Optical lattices provide a tremendous amount of freedom to tune the properties of these topological phases. For example, the velocity of an atom in these edge modes is determined by the wavelength of the laser used to construct the optical lattice[^b]:
+
+TODO video of 3 different spin up atoms
+
+(Note that the lattice spacing is defined by the wavelength of the laser used, all animations are using the same length scale.) 
+
+Different topological phases can yield conductive bands with different behavior. By flipping the dynamics of the optical lattice, we can flip the "chirality" (i.e. the orientation) of the conductive band:
+
+```@setup
+using Fusion
+
+plot_record(
+  [Atom(r=Point3f(-20.0, -20.0, 10.0), is_spin_up=false)],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
+  "single_spin_down.mp4"
+)
+```
+```@raw html
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_down.mp4" style="max-height: 40vh;"/>
+```
+
+(Note that the blue color is used to denote that this atom is spin-down, its spin points in the opposite direction of the red spin-up atoms shown above).
+
+We need one last piece before the punch line -- another topological phase[^d] allows for two edge modes simultaneously:
+
+```@setup
+using Fusion
+
+plot_record(
+  [Atom(r=Point3f(-20.0, -20.0, 10.0)), Atom(r=Point3f(20.0, 20.0, 10.0), is_spin_up=false)],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
+  "quantum_spin_hall.mp4"
+)
+```
+```@raw html
+<video class="marginauto" autoplay loop muted playsinline controls src="./quantum_spin_hall.mp4" style="max-height: 40vh;"/>
+```
+
+In this "helical" topological phase, as opposed to the chiral phases above, atoms of opposite spin counterpropagate along the edge of the topological phase. 
+
+Now for the punch line -- above a threshold velocity, there should be some chance for these counterpropagating atoms to collide and trigger nuclear fusion:
+
+
+This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it and argue:
+
+1. The topological twist is uniquely suited to overcome each of the fatal limiations of CBF.
+2. We can achieve the same threshold velocity with current technology, though it would likely be a very difficult technological feat requiring rare [Free Electron Lasers] (https://en.wikipedia.org/wiki/Free-electron_laser) emitting in the X-ray spectrum (wavelength of 0.1-1 nanometers).
+3. Atoms in the edge modes can fuse at a much lower velocity relative to atoms in free space. While it is difficult to say definitively, it could reasonably be achieved with much more common and [commercially available](https://www.kmlabs.com/core-technology) lasers in the extreme Ultraviolet or soft X-ray part of the spectrum (wavelength of 1-10 nanometers).
+4. Even in the worst-case scenario, this is significantly cheaper to build and easier to sustain than any of the leading "thermodynamic" candidates for nuclear fusion.
+
+
+
+The velocity of this edge mode scales very favorably for our goal,
+
+```math
+v = \frac{1}{\lambda^3}
+```
+
+
+
 
 
 
@@ -89,5 +151,9 @@ Lorem ipsum
 ## Citations
 
 [^a]: https://arxiv.org/abs/2304.01980
+[^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
+[^c]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
+[^d]: While this topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
+
 [^1]: [Per kg, the combustion of hydrogen and oxygen yields 13 MJ, whereas the fusion of deuterium and tritium yields 3.6 x 10^8 MJ](https://ntrs.nasa.gov/api/citations/20160010608/downloads/20160010608.pdf)
 [^2]: [Inertial confinement fusion](https://en.wikipedia.org/wiki/Inertial_confinement_fusion), [magnetized target fusion](https://en.wikipedia.org/wiki/Magnetized_target_fusion), [inertial electrostatic confinement](https://en.wikipedia.org/wiki/Inertial_electrostatic_confinement) and the [Tokamak](https://en.wikipedia.org/wiki/Tokamak) design all reside in the family of thermonuclear fusion reactors. The NIF project uses inertial confinement fusion, the ITER project is a Tokamak design.
