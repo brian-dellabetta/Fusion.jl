@@ -43,7 +43,33 @@ Atoms in these edge modes have some interesting properties. They behave as if th
 
 Optical lattices provide a tremendous amount of freedom to tune the properties of these topological phases. For example, the velocity of an atom in these edge modes is determined by the wavelength of the laser used to construct the optical lattice[^b]:
 
-TODO video of 3 different spin up atoms
+
+```@setup
+using Fusion
+
+plot_record(
+  [Atom(r=Point3f(-20.0, -20.0, 10.0))],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 2.0f0),
+  "single_spin_up_a02.mp4"
+)
+plot_record(
+  [Atom(r=Point3f(-20.0, -20.0, 10.0))],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 1.0f0),
+  "single_spin_up_a01.mp4"
+)
+```
+```@raw html
+<table width="100%">
+<tr>
+<td align="left" valign="top" width="50%">
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up_a02.mp4" style="max-height: 40vh;"/>
+</td>
+<td align="left" valign="top" width="50%">
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up_a01.mp4" style="max-height: 40vh;"/>
+</td>
+</tr>
+</table>
+```
 
 (Note that the lattice spacing is defined by the wavelength of the laser used, all animations are using the same length scale.) 
 
@@ -62,7 +88,7 @@ plot_record(
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_down.mp4" style="max-height: 40vh;"/>
 ```
 
-(Note that the blue color is used to denote that this atom is spin-down, its spin points in the opposite direction of the red spin-up atoms shown above).
+(Note that the cyan color is used to denote that this atom is spin-down, its spin points in the opposite direction of the magenta spin-up atoms shown above).
 
 We need one last piece before the punch line -- another topological phase[^d] allows for two edge modes simultaneously:
 
@@ -70,7 +96,7 @@ We need one last piece before the punch line -- another topological phase[^d] al
 using Fusion
 
 plot_record(
-  [Atom(r=Point3f(-20.0, -20.0, 10.0)), Atom(r=Point3f(20.0, 20.0, 10.0), is_spin_up=false)],
+  [Atom(r=Point3f(-20.0, -20.0, 10.0)), Atom(r=Point3f(-20.0, -20.0, 20.0), is_spin_up=false)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "quantum_spin_hall.mp4"
 )
@@ -86,7 +112,7 @@ Now for the punch line -- above a threshold velocity, there should be some chanc
 
 This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it and argue:
 
-1. The topological twist is uniquely suited to overcome each of the fatal limiations of CBF.
+1. The topological twist is uniquely suited to overcome each of the fatal flaws of CBF.
 2. We can achieve the same threshold velocity with current technology, though it would likely be a very difficult technological feat requiring rare [Free Electron Lasers] (https://en.wikipedia.org/wiki/Free-electron_laser) emitting in the X-ray spectrum (wavelength of 0.1-1 nanometers).
 3. Atoms in the edge modes can fuse at a much lower velocity relative to atoms in free space. While it is difficult to say definitively, it could reasonably be achieved with much more common and [commercially available](https://www.kmlabs.com/core-technology) lasers in the extreme Ultraviolet or soft X-ray part of the spectrum (wavelength of 1-10 nanometers).
 4. Even in the worst-case scenario, this is significantly cheaper to build and easier to sustain than any of the leading "thermodynamic" candidates for nuclear fusion.

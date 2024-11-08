@@ -27,8 +27,8 @@ function plot_record(
     #initialize
     step!(atoms, lattice; n_steps=tail_length)
     let
-        up_color = to_color(:red)
-        down_color = to_color(:blue)
+        up_color = to_color(:magenta)
+        down_color = to_color(:cyan)
         up_tail_color = [RGBAf(up_color.r, up_color.g, up_color.b, (i / tail_length)^2) for i in 1:tail_length]
         down_tail_col = [RGBAf(down_color.r, down_color.g, down_color.b, (i / tail_length)^2) for i in 1:tail_length]
         for atom in atoms
