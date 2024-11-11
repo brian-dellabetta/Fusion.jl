@@ -6,10 +6,14 @@ function plot_record(
     lattice::Lattice,
     filename::String;
     domain=(Point3f(-30.0, -30.0, -10.0), Point3f(30.0, 30.0, 10.0)),
-    tail_length::Integer=10,
-    n_steps_per_frame::Integer=7
+    n_steps_per_frame::Integer=7,
+    n_frames::Integer=120
 )
     GLMakie.activate!()
+
+    #for simplicity, require all atoms have same tail_length
+    tail_length = length(atoms) > 0 ? atoms[1].tail_length : 1
+    @assert all(atom -> atom.tail_length == tail_length, atoms)
 
     set_theme!(theme_black())
 
@@ -37,9 +41,9 @@ function plot_record(
         end
     end
 
-    record(fig, filename, 1:120) do frame_idx
+    record(fig, filename, 1:n_frames) do frame_idx
         step!(atoms, lattice; n_steps=n_steps_per_frame)
-        ax.azimuth[] = 1.7pi + 0.4 * sin(2pi * frame_idx / 120)
+        ax.azimuth[] = 1.7pi + 0.3 * sin(2pi * frame_idx / n_frames)
         ax.elevation[] = pi / 6
     end
 

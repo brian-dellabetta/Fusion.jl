@@ -24,6 +24,7 @@ makedocs(;
     build="build",
     pages=[
         "Home" => "index.md",
+        "Fusion Primer" => "fusion_primer.md",
     ],
     warnonly=true,
 )
