@@ -24,6 +24,8 @@ makedocs(;
     build="build",
     pages=[
         "Home" => "index.md",
+        "Colliding Beam Fusion" => "colliding_beam_fusion.md",
+        "Nuclear Fusion Primer" => "nuclear_fusion_primer.md"
     ],
     warnonly=true,
 )
