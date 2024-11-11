@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: (Ultra-)Cold Fusion?
+  name: Ultracold Fusion?
   text: 
   tagline: Why a new state of matter is the perfect environment to realize a 50-year-old idea for cold fusion -- one that promises to be far cheaper and easier to sustain than <b>any</b> of the current leading candidates.
   image:
@@ -19,7 +19,7 @@ hero:
 ---
 ````
 
-This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases of matter"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](https://github.com/brian-dellabetta/Fusion.jl/paper/paper.pdf).*
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases of matter"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](assets/Topological_Colliding_Beam_Nuclear_Fusion.pdf).*
 
 # Introduction 
 
@@ -126,7 +126,11 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./qsh.mp4" style="max-height: 40vh;"/>
 ```
 
-We all have the necessary ingredients, now for the punch line -- in the helical phase, above a threshold velocity, the counterpropagating atoms have a chance to collide and fuse[^e]:
+### Putting it all Together
+
+We all have the necessary ingredients, now for the punch line -- in the helical topological phase, above a threshold velocity, counterpropagating atoms have a chance to collide and fuse[^e]:
+
+!!! todo "Video Under Construction"
 
 ```@setup
 using Fusion
@@ -140,7 +144,9 @@ create_movie(
 )
 ```
 ```@raw html
+<!--
 <video class="marginauto" autoplay loop muted playsinline controls src="./qsh_fuse.mp4" style="max-height: 60vh;"/>
+-->
 ```
 
 This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but why it ultimately failed to work -- and argue:
@@ -152,7 +158,7 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 
 
 
-## Citations
+# Footnotes
 
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.

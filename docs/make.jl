@@ -25,7 +25,9 @@ makedocs(;
     pages=[
         "Home" => "index.md",
         "Colliding Beam Fusion" => "colliding_beam_fusion.md",
-        "Appendix: Nuclear Fusion In a Nutshell" => "nuclear_fusion_primer.md"
+        "Appendices" => [
+            "Nuclear Fusion in a Nutshell" => "nuclear_fusion_nutshell.md"
+        ]
     ],
     warnonly=true,
 )

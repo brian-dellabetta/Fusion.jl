@@ -16,5 +16,7 @@ The caveat, of course, is that this is really difficult to achieve. In order to 
 Hundreds of millions of degrees, tens of billions of dollars *for an experiment*. The numbers are eye-watering. Thermonuclear fusion is a brute-force approach rife with challenges, but it's not the only option.
 
 
+## Footnotes
+
 [^1]: [Per kg, the combustion of hydrogen and oxygen yields 13 MJ, whereas the fusion of deuterium and tritium yields 3.6 x 10^8 MJ](https://ntrs.nasa.gov/api/citations/20160010608/downloads/20160010608.pdf)
 [^2]: [Inertial confinement fusion](https://en.wikipedia.org/wiki/Inertial_confinement_fusion), [magnetized target fusion](https://en.wikipedia.org/wiki/Magnetized_target_fusion), [inertial electrostatic confinement](https://en.wikipedia.org/wiki/Inertial_electrostatic_confinement) and the [Tokamak](https://en.wikipedia.org/wiki/Tokamak) design all reside in the family of thermonuclear fusion reactors. The NIF project uses inertial confinement fusion, the ITER project is a Tokamak design.
