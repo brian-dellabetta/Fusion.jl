@@ -1,7 +1,7 @@
 using GLMakie
 
 
-function plot_record(
+function create_movie(
     atoms::AbstractArray{<:Atom},
     lattice::Lattice,
     filename::String;

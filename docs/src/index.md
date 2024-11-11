@@ -29,7 +29,7 @@ Physicists have recently realized a new topological phase of matter by careful p
 ```@setup
 using Fusion
 
-plot_record(
+create_movie(
   [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "single_spin_up.mp4";
@@ -37,7 +37,7 @@ plot_record(
 )
 ```
 ```@raw html
-<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 40vh;"/>
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 60vh;"/>
 ```
 
 Atoms in these edge modes have some interesting properties. They behave as if they are massless, allowing for high velocity at low or even zero energy[^c], and are confined along the one-dimensional boundary of the topological phase.
@@ -61,7 +61,7 @@ using Fusion
 #n_steps_per_frame should be 16x higher than a0=4 case (8x for velocity increase, 2x for smaller lattice spacing), 
 #but use prime number so edge_idx is always different after one revolution
 n_steps_per_frame=15
-plot_record(
+create_movie(
   [Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), tail_length=32)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 2.0f0),
   "single_spin_up_a02.mp4";
@@ -69,7 +69,7 @@ plot_record(
 )
 #should be (16*16)x higher than a0=4 case
 n_steps_per_frame=257
-plot_record(
+create_movie(
   [Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), tail_length=64)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 1.0f0),
   "single_spin_up_a01.mp4";
@@ -96,7 +96,7 @@ The topological phase determines the number and orientation of the edge modes. I
 ```@setup
 using Fusion
 
-plot_record(
+create_movie(
   [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "single_spin_down.mp4";
@@ -112,7 +112,7 @@ Other topological phases allows for mulitple edge modes simultaneously. We are i
 ```@setup
 using Fusion
 
-plot_record(
+create_movie(
   [
     Atom(r=Point3f(-20.0, -20.0, 2.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5), 
     Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)
@@ -132,24 +132,15 @@ We all have the necessary ingredients, now for the punch line -- in the helical 
 using Fusion
 
 n_steps_per_frame=257
-plot_record(
+create_movie(
   [Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), tail_length=64)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 1.0f0),
-  "qsh_a01.mp4";
+  "qsh_fuse.mp4";
   n_steps_per_frame=n_steps_per_frame 
 )
 ```
 ```@raw html
-<table width="100%">
-<tr>
-<td align="left" valign="top" width="50%">
-<video class="marginauto" autoplay loop muted playsinline controls src="./qsh_a02.mp4" style="max-height: 40vh;"/>
-</td>
-<td align="left" valign="top" width="50%">
-<video class="marginauto" autoplay loop muted playsinline controls src="./qsh_a01.mp4" style="max-height: 40vh;"/>
-</td>
-</tr>
-</table>
+<video class="marginauto" autoplay loop muted playsinline controls src="./qsh_fuse.mp4" style="max-height: 60vh;"/>
 ```
 
 This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but why it ultimately failed to work -- and argue:
@@ -169,5 +160,5 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
 [^c]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
-[^d]: While this topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
-[^e]: [Nuclear Fusion in a Nutshell](#Nuclear-Fusion-in-a-Nutshell), everything you need to know about fusion to understand the argument.
+[^d]: While this helical topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
+[^e]: Check out [Nuclear Fusion in a Nutshell](nuclear_fusion_primer.md#Nuclear-Fusion-in-a-Nutshell) for everything you need to know about fusion to understand the argument.

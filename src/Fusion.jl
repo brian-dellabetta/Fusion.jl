@@ -8,6 +8,6 @@ include("lattice.jl")
 include("atom.jl")
 include("plot.jl")
 
-export Atom, Lattice, plot_record, step!, Point3f, Line3f
+export Atom, Lattice, create_movie, step!, Point3f, Line3f
 
 end
