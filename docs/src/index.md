@@ -152,13 +152,10 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 
 
 
-
-
-
 ## Citations
 
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
 [^c]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
 [^d]: While this helical topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
-[^e]: Check out [Nuclear Fusion in a Nutshell](nuclear_fusion_primer.md#Nuclear-Fusion-in-a-Nutshell) for everything you need to know about fusion to understand the argument.
+[^e]: Check out [Nuclear Fusion in a Nutshell](nuclear_fusion_nutshell.md#Nuclear-Fusion-in-a-Nutshell) for a quick primer on everything you need to know about fusion to understand the argument.
