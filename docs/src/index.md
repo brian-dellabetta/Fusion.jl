@@ -19,11 +19,15 @@ hero:
 ---
 ````
 
-This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric terms (namely ["topological phases of matter"](https://topocondmat.org/index.html) and ["ultracold atoms"](https://en.wikipedia.org/wiki/Ultracold_atom)) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](assets/Topological_Colliding_Beam_Nuclear_Fusion.pdf).*
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric physics (both new and old) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](assets/Topological_Colliding_Beam_Nuclear_Fusion.pdf).*
 
 # Introduction 
 
-Physicists have recently realized a new topological phase of matter by careful preparation of an optical lattice (i.e. a lattice formed of laser light).[^a] One signature of this topological phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultra cold atom were placed into that edge mode, it would propagate along the boundary:
+The study of [ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) is one of the most fascinating areas of research in physics today. By trapping and cooling atoms with lasers below a millionth of a degree above absolute zero, scientists can realize exotic states of matter for study, simulation, and even for quantum computing[^qc].
+
+We will focus on one class of these exotic states, namely topological states of matter, which have recently been realized for ultracold atoms with optical lattices (i.e. a lattice formed of laser light)[^a]. [Entire courses](https://topocondmat.org/index.html) exist to study their long and rich history, but for the scope of this argument, 
+
+Physicists have recently realized a new topological phase of matter by careful preparation of an optical lattice  One signature of this topological phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultra cold atom were placed into that edge mode, it would propagate along the boundary:
 
 
 ```@setup
@@ -126,7 +130,7 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./qsh.mp4" style="max-height: 40vh;"/>
 ```
 
-### Putting it all Together
+# Proposal
 
 We all have the necessary ingredients, now for the punch line -- in the helical topological phase, above a threshold velocity, counterpropagating atoms have a chance to collide and fuse[^e]:
 
@@ -160,6 +164,7 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 
 # Footnotes
 
+[^qc]: [QuEra](https://www.quera.com/about), [Infleqtion](https://www.infleqtion.com/quantum-computing), and [IonQ](https://ionq.com/technology) are three examples of atom-based quantum computing companies.
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
 [^c]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
