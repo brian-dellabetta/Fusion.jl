@@ -25,10 +25,7 @@ This post is designed to support the above claim approachably and with some grap
 
 The study of [ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) is one of the most fascinating areas of research in physics today. By trapping and cooling atoms with lasers below a millionth of a degree above absolute zero, scientists can realize exotic states of matter for study, simulation, and even for quantum computing[^qc].
 
-We will focus on one class of these exotic states, namely topological states of matter, which have recently been realized for ultracold atoms with optical lattices (i.e. a lattice formed of laser light)[^a]. [Entire courses](https://topocondmat.org/index.html) exist to study their long and rich history, but for the scope of this argument, 
-
-Physicists have recently realized a new topological phase of matter by careful preparation of an optical lattice  One signature of this topological phase is the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultra cold atom were placed into that edge mode, it would propagate along the boundary:
-
+We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. [Entire courses](https://topocondmat.org/index.html) are dedicated to the rich history of topological phases of matter, but for the purpose of this argurment we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultracold atom were placed into that edge mode, it would propagate along the boundary:
 
 ```@setup
 using Fusion
@@ -44,12 +41,47 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 60vh;"/>
 ```
 
-Atoms in these edge modes have some interesting properties. They behave as if they are massless, allowing for high velocity at low or even zero energy[^c], and are confined along the one-dimensional boundary of the topological phase.
+The number and orientation of the edge modes depends on the specific topological phase. In another phase, the "chirality" of the conductive band can be flipped, flipping the spin and velocity of the atom (here cyan color is used to denote that this atom is spin-down, its spin points in the opposite direction of the magenta spin-up atoms shown above):
 
-Optical lattices provide a tremendous amount of freedom to tune the properties of these topological phases. We need to introduce two of those before reaching the punch line. 
+```@setup
+using Fusion
+
+create_movie(
+  [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
+  "single_spin_down.mp4";
+  n_steps_per_frame=1
+)
+```
+```@raw html
+<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_down.mp4" style="max-height: 40vh;"/>
+```
+
+Other topological phases allows for mulitple edge modes simultaneously. We are interested in a "helical" topological phase, as opposed to the chiral phases above, which allows for atoms of opposite spin to counterpropagate along the boundary of the topological phase[^helical]:
+
+```@setup
+using Fusion
+
+create_movie(
+  [
+    Atom(r=Point3f(-20.0, -20.0, 2.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5), 
+    Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)
+  ],
+  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
+  "qsh.mp4";
+  n_steps_per_frame=1
+)
+```
+```@raw html
+<video class="marginauto" autoplay loop muted playsinline controls src="./qsh.mp4" style="max-height: 40vh;"/>
+```
+
+Atoms in these edge modes have some interesting properties. They behave as if they are massless, allowing for high velocity at low or even zero energy[^quasiparticle], and are confined along the one-dimensional boundary of the topological phase.
+
+Optical lattices offer a tremendous amount of freedom to tune the properties of atoms in these edge modes. We need to introduce two of those before reaching the punch line. 
 
 
-### 1) Edge Mode Velocity
+### Edge Mode Velocity
 
 The velocity ``v`` of an atom in these edge modes is determined by the wavelength ``\lambda`` of the laser used to construct the optical lattice[^b], and scales very favorably for our purposes:
 
@@ -93,42 +125,6 @@ create_movie(
 </table>
 ```
 
-### 2) Edge Mode Number and Orientation
-
-The topological phase determines the number and orientation of the edge modes. In another phase, the "chirality" of the conductive band can be flipped, so that an the atoms spin and velocity flip (here cyan color is used to denote that this atom is spin-down, its spin points in the opposite direction of the magenta spin-up atoms shown above):
-
-```@setup
-using Fusion
-
-create_movie(
-  [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)],
-  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
-  "single_spin_down.mp4";
-  n_steps_per_frame=1
-)
-```
-```@raw html
-<video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_down.mp4" style="max-height: 40vh;"/>
-```
-
-Other topological phases allows for mulitple edge modes simultaneously. We are interested in a "helical" topological phase, as opposed to the chiral phases above, which allows for atoms of opposite spin to counterpropagate along the boundary of the topological phase[^d]:
-
-```@setup
-using Fusion
-
-create_movie(
-  [
-    Atom(r=Point3f(-20.0, -20.0, 2.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5), 
-    Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)
-  ],
-  Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
-  "qsh.mp4";
-  n_steps_per_frame=1
-)
-```
-```@raw html
-<video class="marginauto" autoplay loop muted playsinline controls src="./qsh.mp4" style="max-height: 40vh;"/>
-```
 
 # Proposal
 
@@ -167,6 +163,6 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 [^qc]: [QuEra](https://www.quera.com/about), [Infleqtion](https://www.infleqtion.com/quantum-computing), and [IonQ](https://ionq.com/technology) are three examples of atom-based quantum computing companies.
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
-[^c]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
-[^d]: While this helical topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
+[^helical]: While this helical topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
+[^quasiparticle]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
 [^e]: Check out [Nuclear Fusion in a Nutshell](nuclear_fusion_nutshell.md#Nuclear-Fusion-in-a-Nutshell) for a quick primer on everything you need to know about fusion to understand the argument.
