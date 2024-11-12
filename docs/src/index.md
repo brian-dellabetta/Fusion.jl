@@ -25,7 +25,7 @@ This post is designed to support the above claim approachably and with some grap
 
 The study of [ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) is one of the most fascinating areas of research in physics today. By trapping and cooling atoms with lasers below a millionth of a degree above absolute zero, scientists can realize exotic states of matter for study, simulation, and even for quantum computing[^qc].
 
-We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. [Entire courses](https://topocondmat.org/index.html) are dedicated to the rich history of topological phases of matter, but for the purpose of this argurment we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultracold atom were placed into that edge mode, it would propagate along the boundary:
+We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. Entire courses are dedicated to the rich history of topological phases of matter[^topcondmat], but for our purposes we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultracold atom were placed into that edge mode, it would propagate along the boundary:
 
 ```@setup
 using Fusion
@@ -76,12 +76,15 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./qsh.mp4" style="max-height: 40vh;"/>
 ```
 
-Atoms in these edge modes have some interesting properties. They behave as if they are massless, allowing for high velocity at low or even zero energy[^quasiparticle], and are confined along the one-dimensional boundary of the topological phase.
+Atoms will move along these one-dimensional loops, some going clockwise and some going counter-clockwise. A single clockwise atom will pass by each counter-clockwise atom exactly once per revolution around the loop.
 
-Optical lattices offer a tremendous amount of freedom to tune the properties of atoms in these edge modes. We need to introduce two of those before reaching the punch line. 
+One might already see things coming together, but we need to provide a bit more detail before reaching the punch line. 
 
+### Edge Mode Properties
 
-### Edge Mode Velocity
+Atoms in these edge modes behave as if they are massless, allowing for high velocity at low or even zero energy[^quasiparticle], and are confined along the one-dimensional boundary of the topological phase.
+
+Optical lattices offer a tremendous amount of freedom to tune the properties of atoms in these edge modes. 
 
 The velocity ``v`` of an atom in these edge modes is determined by the wavelength ``\lambda`` of the laser used to construct the optical lattice[^b], and scales very favorably for our purposes:
 
@@ -125,10 +128,9 @@ create_movie(
 </table>
 ```
 
+# Our claim
 
-# Proposal
-
-We all have the necessary ingredients, now for the punch line -- in the helical topological phase, above a threshold velocity, counterpropagating atoms have a chance to collide and fuse[^e]:
+Everything up to this point can be found in the research literature, we have not introduced anything new so far.  -- **below a certain optical lattice laser wavelength, counterpropagating ultracold atoms will have a small probability of colliding each time they pass by one another, and fusing**[^nutshell]:
 
 !!! todo "Video Under Construction"
 
@@ -149,7 +151,7 @@ create_movie(
 -->
 ```
 
-This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but why it ultimately failed to work -- and argue:
+Any atoms and neutrons resulting from the fusion event will shoot out at extremely high speed. The kinetic energy could be harvested to generate energy[^harvest]. This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but ultimately failed to work -- and argue:
 
 1. The topological twist is uniquely suited to overcome each of the fatal flaws of CBF.
 2. We can achieve the same threshold velocity with current technology, though it would likely be a very difficult technological feat requiring rare [Free Electron Lasers] (https://en.wikipedia.org/wiki/Free-electron_laser) emitting in the X-ray spectrum (wavelength of 0.1-1 nanometers).
@@ -161,8 +163,10 @@ This is a new twist on an old, long-dormant fusion power concept called [collidi
 # Footnotes
 
 [^qc]: [QuEra](https://www.quera.com/about), [Infleqtion](https://www.infleqtion.com/quantum-computing), and [IonQ](https://ionq.com/technology) are three examples of atom-based quantum computing companies.
+[^topcondmat]: For an excellent open online course featuring snippets from some of the most prominent researchers, see https://topocondmat.org/index.html. Please note this course is self-described as complex, intended for graduate students or above.
 [^a]: https://arxiv.org/abs/2304.01980
 [^b]: Other properties, like the frequency at which lasers are turned on and off, have to be likewise tuned to maintain the topological phase.
 [^helical]: While this helical topological phase has yet to be realized experimentally, several proposals exist involving the same building blocks as in the chiral phases.
 [^quasiparticle]: This may sound like science fiction -- how could a massive particle behave as though it has no mass? It is what makes condensed matter physics such a fascinating field. Electrons can similarly behave as though they are massless in [graphene](https://en.wikipedia.org/wiki/Graphene#Electronic_spectrum) (the honeycomb structure of graphene and the optical lattices above is not a coincidence.)
-[^e]: Check out [Nuclear Fusion in a Nutshell](nuclear_fusion_nutshell.md#Nuclear-Fusion-in-a-Nutshell) for a quick primer on everything you need to know about fusion to understand the argument.
+[^nutshell]: Check out the [Nuclear Fusion in a Nutshell](nuclear_fusion_nutshell.md#Nuclear-Fusion-in-a-Nutshell) page for a quick primer on everything you need to know about fusion to understand the argument, or [this nice explanation from the EIA](https://www.eia.gov/energyexplained/nuclear/).
+[^harvest]: If fusion occurs, this part should be fairly simple. Similar to [nuclear fission reactors](https://www.energy.gov/science/doe-explainsnuclear-fission), the high energy particles or radiation could be absorbed as heat, boil water, and drive steam turbines. It appears this is compatible as well with prior proposals for fusion-based [Space Propulsion Systems](https://web.archive.org/web/20060331033513id_/http://fusion.ps.uci.edu:80/artan/Papers/CBFRforSpacePropulsion.pdf).
