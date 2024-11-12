@@ -25,13 +25,13 @@ This post is designed to support the above claim approachably and with some grap
 
 The study of [ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) is one of the most fascinating areas of research in physics today. By trapping and cooling atoms with lasers below a millionth of a degree above absolute zero, scientists can realize exotic states of matter for study, simulation, and even for quantum computing[^qc].
 
-We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. Entire courses are dedicated to the rich history of topological phases of matter[^topcondmat], but for our purposes we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If an ultracold atom were placed into that edge mode, it would propagate along the boundary:
+We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. Entire courses are dedicated to the rich history of topological phases of matter[^topcondmat], but for our purposes we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If a few ultracold atoms were placed into that edge mode, they would propagate along the boundary:
 
 ```@setup
 using Fusion
 
 create_movie(
-  [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5)],
+  [Atom(r=Point3f(-20.0, -20.0, z), v=Point3f(0.0, 0.0, -0.1), tail_length=5) for z in (3.0, 6.0, 9.0)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "single_spin_up.mp4";
   n_steps_per_frame=1
@@ -47,7 +47,7 @@ The number and orientation of the edge modes depends on the specific topological
 using Fusion
 
 create_movie(
-  [Atom(r=Point3f(-20.0, -20.0, 4.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)],
+  [Atom(r=Point3f(-20.0, -20.0, z), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false) for z in (3.0, 6.0, 9.0)],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "single_spin_down.mp4";
   n_steps_per_frame=1
@@ -64,8 +64,8 @@ using Fusion
 
 create_movie(
   [
-    Atom(r=Point3f(-20.0, -20.0, 2.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5), 
-    Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=false)
+    Atom(r=Point3f(-20.0, -20.0 + (is_spin_up ? 1.0 : 0.0), z), v=Point3f(0.0, 0.0, -0.1), tail_length=5, is_spin_up=is_spin_up)
+    for z in (3.0, 6.0, 9.0) for is_spin_up in (true, false)
   ],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 4.0f0),
   "qsh.mp4";
@@ -101,7 +101,10 @@ using Fusion
 #but use prime number so edge_idx is always different after one revolution
 n_steps_per_frame=15
 create_movie(
-  [Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), tail_length=32)],
+  [
+    Atom(r=Point3f(-20.0, -20.0 + (is_spin_up ? 1.0 : 0.0), z), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), is_spin_up=is_spin_up, tail_length=32)
+    for z in (3.0, 6.0, 9.0) for is_spin_up in (true, false)
+  ],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 2.0f0),
   "single_spin_up_a02.mp4";
   n_steps_per_frame=n_steps_per_frame 
@@ -109,7 +112,10 @@ create_movie(
 #should be (16*16)x higher than a0=4 case
 n_steps_per_frame=257
 create_movie(
-  [Atom(r=Point3f(-20.0, -20.0, 3.0), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), tail_length=64)],
+  [
+    Atom(r=Point3f(-20.0, -20.0 + (is_spin_up ? 1.0 : 0.0), z), v=Point3f(0.0, 0.0, -0.1/n_steps_per_frame), is_spin_up=is_spin_up, tail_length=64)
+    for z in (3.0, 6.0, 9.0) for is_spin_up in (true, false)
+  ],
   Lattice((Point3f(-20.0, -20.0, 0.0), Point3f(20.0, 20.0, 0.0)), 1.0f0),
   "single_spin_up_a01.mp4";
   n_steps_per_frame=n_steps_per_frame 

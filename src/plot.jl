@@ -7,7 +7,7 @@ function create_movie(
     filename::String;
     domain=(Point3f(-30.0, -30.0, -10.0), Point3f(30.0, 30.0, 10.0)),
     n_steps_per_frame::Integer=7,
-    n_frames::Integer=120
+    n_frames::Integer=180
 )
     GLMakie.activate!()
 
