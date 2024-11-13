@@ -23,9 +23,9 @@ This post is designed to support the above claim approachably and with some grap
 
 # Introduction 
 
-The study of [ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) is one of the most fascinating areas of research in physics today. By trapping and cooling atoms with lasers below a millionth of a degree above absolute zero, scientists can realize exotic states of matter for study, simulation, and even for quantum computing[^qc].
+[Ultracold atoms](https://en.wikipedia.org/wiki/Ultracold_atom) are one of the most fascinating emerging technologies in physics today. Using lasers to trap and cool atoms to within a millionth of a degree of absolute zero, scientists can manipulate them into exotic states of matter or even use them as quantum computers[^qc].
 
-We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. Entire courses are dedicated to the rich history of topological phases of matter[^topcondmat], but for our purposes we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If a few ultracold atoms were placed into that edge mode, they would propagate along the boundary:
+We will focus on one class of these exotic states, namely *topological* states of matter, which have recently been realized for ultracold atoms in a carefully designed hexagonal optical lattice (i.e. a honeycomb-shaped lattice formed of laser light)[^a]. Entire courses are dedicated to the rich history of topological phases of matter[^topcondmat], but for our purposes we only need to know about one signature -- the presence of conductive modes along the boundary of the topological phase, known as "topological edge modes". If a few ultracold atoms were placed into that edge mode, they would propagate along the boundary:
 
 ```@setup
 using Fusion
@@ -41,7 +41,7 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_up.mp4" style="max-height: 60vh;"/>
 ```
 
-The number and orientation of the edge modes depends on the specific topological phase. In another phase, the "chirality" of the conductive band can be flipped, flipping the spin and velocity of the atom (here cyan color is used to denote that this atom is spin-down, its spin points in the opposite direction of the magenta spin-up atoms shown above):
+The number and orientation of these edge modes depends on the specific topological phase. In another phase, the "chirality" of the conductive band can be flipped, flipping the spin and velocity of the atom (here cyan color is used to denote that this atom is spin-down, its spin points in the opposite direction of the magenta spin-up atoms shown above):
 
 ```@setup
 using Fusion
@@ -57,7 +57,7 @@ create_movie(
 <video class="marginauto" autoplay loop muted playsinline controls src="./single_spin_down.mp4" style="max-height: 40vh;"/>
 ```
 
-Other topological phases allows for mulitple edge modes simultaneously. We are interested in a "helical" topological phase, as opposed to the chiral phases above, which allows for atoms of opposite spin to counterpropagate along the boundary of the topological phase[^helical]:
+Other topological phases allows for mulitple edge modes simultaneously. We are interested in a "helical" topological phase, effectively a combination of the two chiral phases above. In this phase, atoms of opposite spin counter-propagate along the boundary of the topological phase simultaneously[^helical]:
 
 ```@setup
 using Fusion
@@ -134,9 +134,9 @@ create_movie(
 </table>
 ```
 
-# Our claim
+# The Claim
 
-Everything up to this point can be found in the research literature, we have not introduced anything new so far.  -- **below a certain optical lattice laser wavelength, counterpropagating ultracold atoms will have a small probability of colliding each time they pass by one another, and fusing**[^nutshell]:
+Everything up to this point can be found in the research literature, we have not introduced anything new so far. The claim -- **below a certain optical lattice laser wavelength, counter-propagating ultracold atoms will be moving fast enough to occasionally collide and fuse**[^nutshell]:
 
 !!! todo "Video Under Construction"
 
@@ -157,12 +157,12 @@ create_movie(
 -->
 ```
 
-Any atoms and neutrons resulting from the fusion event will shoot out at extremely high speed. The kinetic energy could be harvested to generate energy[^harvest]. This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF). In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but ultimately failed to work -- and argue:
+Any atoms and neutrons resulting from the fusion event will shoot out at extremely high speed. The kinetic energy could be harvested to generate energy[^harvest]. This is a new twist on an old, long-dormant fusion power concept called [colliding beam fusion](https://en.wikipedia.org/wiki/Colliding_beam_fusion) (CBF), which basically attempted to do thet same thing with atoms shot towards one another in free space. In the following section, we will provide a brief history of it -- why it is preferable to current leading candidates but ultimately failed to work -- and argue:
 
-1. The topological twist is uniquely suited to overcome each of the fatal flaws of CBF.
-2. We can achieve the same threshold velocity with current technology, though it would likely be a very difficult technological feat requiring rare [Free Electron Lasers] (https://en.wikipedia.org/wiki/Free-electron_laser) emitting in the X-ray spectrum (wavelength of 0.1-1 nanometers).
-3. Atoms in the edge modes can fuse at a much lower velocity relative to atoms in free space. While it is difficult to say definitively, it could reasonably be achieved with much more common and [commercially available](https://www.kmlabs.com/core-technology) lasers in the extreme Ultraviolet or soft X-ray part of the spectrum (wavelength of 1-10 nanometers).
-4. Even in the worst-case scenario, this is significantly cheaper to build and easier to sustain than any of the leading "thermodynamic" candidates for nuclear fusion.
+1. Our new twist naturally resolves the critical issues that prevented CBF from ever generating a net-positive amount of energy.
+2. Current technology can reach edge mode velocities already known to trigger colliding beam fusion. However, it would likely be a very difficult technological feat requiring rare [Free Electron Lasers] (https://en.wikipedia.org/wiki/Free-electron_laser) emitting in the X-ray spectrum (wavelength of 0.1-1 nanometers).
+3. Atoms in the edge modes can fuse at a much lower velocity relative to atoms in free space. While it is difficult to say definitively, it could reasonably be achieved with much more common and [commercially available](https://www.kmlabs.com/core-technology) lasers in the extreme Ultraviolet / soft X-ray part of the spectrum (wavelength of 1-10 nanometers).
+4. Even the worst-case scenario is significantly cheaper and simpler than any of the currently leading [thermonuclear fusion](https://en.wikipedia.org/wiki/Nuclear_fusion#Thermonuclear_fusion) candidates, which try to create an ["artificial sun"](https://www.ans.org/news/article-5668/china-launches-fusion-consortium-to-build-artificial-sun/) on earth.
 
 
 
