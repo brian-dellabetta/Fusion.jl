@@ -166,13 +166,12 @@ The proposed "Ultracold Fusion" design is depicted in Fig. \ref{subfig:UCF} -- p
 
 \section{Conclusion \& Open Questions}\label{sec:conclusion}
 
-Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility. It is an open question to estimate how much this is improved for atoms with linear dispersion and high wavelength.
+Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility (see Appendix \ref{sec:critvel} for detail). \textbf{It is an open question to estimate how much this is improved for atoms with linear dispersion and high wavelength.}
 
 The design of optical lattices to induce nuclear fusion of ultracold atomic nuclei offers a promising playground to revisit CBF. Optical lattices provide flexible control over the salient features for fusion -- transverse spatial confinement of edge modes, velocity of edge modes, and band gap from bulk states. Here, we simply hope to have motivated it as a promising general framework that merits further exploration, and conclude with some open questions:
 
 \begin{enumerate}
-\item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-locked (i.e. atoms moving clockwise are spin-up while atoms moving counter-clockwise are spin-down), would this have an effect on the scattering trajectory of the resultant high-energy output particles?
-\item \textit{How do the empirically-determined values for fusion cross section vs. colliding velocity (Fig. 1 in \cite{MAGLICH1975IEEE}) improve in a topological cold atom system?} Atoms in the edge modes behave as effectively massless Dirac particles with qualitatively different dispersion than what would arise in a vacuum. There are far fewer scattering states compared to the continuum setting, all of which are bulk states energetically separated from the gapless edge modes. This should translate to much lower scattering, the absence of bremsstrahlung loss, and an improved fusion cross section. How can this be estimated? Practical applications aside, this appears to be a promising environment for probing unique physics.
+\item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-locked (i.e. atoms moving clockwise are spin-up while atoms moving counter-clockwise are spin-down), would this have an effect on the scattering trajectory of the resultant high-energy output particles? Practical applications aside, this appears to be a promising environment for probing unique physics.
 \item \textit{What happens if fusion does occur?} The resultant high-energy (14 MeV) neutron as a charge-free particle would not be bound to the edge mode. Its energy could presumably be captured as heat in a heavy water reservoir. The resultant charged particle would have energy on the order of MeV, far exceeding the band gap, and could be captured easily. Could it inadvertently damage the optical lattice or FQSH state? 
 \item \textit {What happens if fusion does not occur?} Edge modes atoms would either pass by one another or scatter into bulk states. Even if there is only a low probability that two counter-propagating atoms fuse, if the lifetime of an edge mode atomic state is long, it could feasibly pass by many counter-propagating atoms, increasing the number of chances it has to fuse provided scattering rates are low and atoms in edge mode states have long lifetimes.
 \end{enumerate}
@@ -180,8 +179,9 @@ The design of optical lattices to induce nuclear fusion of ultracold atomic nucl
 
 
 \bibliography{biblio}
-
 \pagebreak
+
+
 \begin{appendices}
 \section{Colliding Beam Fusion}\label{sec:CBF}
 
@@ -235,7 +235,7 @@ Topological phases in cold atom systems have been realized for a number of toy m
 
 Although these are chiral currents in a single direction and no published experimental realization of the QSH effect in cold atom systems has been reported to our knowledge, several papers propose schemes for creating it \cite{PhysRevLett.111.225301,PhysRevA.82.053605,PhysRevLett.109.205303,PhysRevLett.105.255302,Yan2015} and observing it \cite{doi:10.1073/pnas.1300170110} with similar Floquet dynamics. As a point of emphasis, Zhang et al. \cite{Yan2015} comment "the edge states are helical in the sense that fermionic atoms with opposite spin propagate in opposite direction". According to the PI of \cite{braun2023realspace}, this amounts to tuning to a different region of the phase diagram, and in principle there is no particular reason why this in principle should not be possible \cite{AidelsburgerPrivateComm}. 
 
-\subsection{Achieving Critical Velocity}\label{sec:critvel}
+\subsubsection{Achieving Critical Velocity}\label{sec:critvel}
 
 The FQSH state thus provides the necessary qualities outlined above, with many degrees of freedom for finding the optimal configuration. Note the band structure diagram in Fig. \ref{subfig:UCF} can be (1) stretched in the vertical direction by scaling every energy and frequency in the optical lattice Hamiltonian by the same factor, or (2) squeezed in the horizontal direction by scaling down the optical lattice constant. Edge mode velocity, bulk band gap, and spatial confinement are all implicitly tuneable. We conclude this section by considering the system requirements to achieve fusible edge mode velocities.
 
