@@ -35,7 +35,7 @@ makedocs(;
 
 
 #Copy static assets, namely whitepaper pdf in src/assets
-file_name = "Topological_Colliding_Beam_Nuclear_Fusion.pdf"
+file_name = "Ultracold_Fusion.pdf"
 paper_src_dir = joinpath(@__DIR__, "src", "assets")
 paper_dst_dir = joinpath(@__DIR__, "build", "assets")
 mkpath(paper_dst_dir)

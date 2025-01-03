@@ -19,7 +19,7 @@ hero:
 ---
 ````
 
-This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric physics (both new and old) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](assets/Topological_Colliding_Beam_Nuclear_Fusion.pdf).*
+This post is designed to support the above claim approachably and with some graphical aid. It involves some esoteric physics (both new and old) but it should hopefully show the main idea is rather straightforward. Please post [here](https://github.com/brian-dellabetta/Fusion.jl/issues) if you find that not to be the case anywhere along the way. *For those looking for more technical rigor, please check out [the white paper](assets/Ultracold_Fusion.pdf).*
 
 # Introduction 
 

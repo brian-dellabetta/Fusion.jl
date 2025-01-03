@@ -14,6 +14,7 @@
 \usepackage{amssymb} 
 % \usepackage{abstract}
 \usepackage{subcaption}
+\usepackage[toc,page]{appendix}
 
 \usepackage{float}
 \usepackage{mathtools}
@@ -24,6 +25,13 @@
 
 \usepackage{tcolorbox}
 \tcbuselibrary{minted,breakable,xparse,skins}
+
+\usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2.5}
+\usepackage{multirow}
+
 
 \definecolor{bg}{gray}{0.95}
 \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
@@ -76,8 +84,7 @@
 
 \begin{document}
 
-\title{Is Colliding Beam Fusion viable in Topological Cold Atom Systems?}
-% \title{Topological Colliding Beam Fusion}
+\title{Ultracold Fusion -- Designing Optical Lattices Suitable for Collision-Based Nuclear Fusion of Ultracold Atoms}
 
 \author{Brian Dellabetta}
 \email{Correspondence: brian.dellabetta@gmail.com}
@@ -87,7 +94,8 @@
 \date{\today}
 %
 \begin{abstract}
-Colliding Beam Fusion (CBF) is a fusion power concept composed of two or more beams of fusible atoms directed towards one another with sufficient kinetic energy to overcome the Coulomb barrier and trigger nuclear fusion. First proposed nearly 50 years ago, several schemes and applications appear in the literature, but research appears to have halted due to some fundamental problems: the fusion cross section $\sigma_f \approx 10^{-28} \textrm{m}^2$ is much too small relative to the beam cross section ($10^{-1} \textrm{m}^2$); the fusible material disperses in the transverse direction (i.e. perpendicular to the direction of transport); and too much energy is spent accelerating atoms to a critical velocity necessary to achieve fusion. The ideal design would include the following: the atoms would move toward one another along two exactly overlapping, one-dimensional modes; particles in the modes would be exponentially pinned in the transverse directions; the modes would allow for high velocity at zero or low energy to reduce operating energy; and the modes would be protected from decelerating, back-scattering, or scattering into any other modes. Fortunately, each of these qualities exist in certain so-called topological states of matter, which have a rich history for electronic states in condensed matter physics and have more recently been demonstrated \textit{for atomic states} in cold atom systems. Not only does the desired topological cold atom system appear feasible with current technology, the salient features -- edge mode velocity, band gap, degree of transverse spatial confinement, and concentration of fusible atoms -- are tuneable with remarkable flexibility and control. Here, we propose Topological Colliding Beam Fusion (TCBF) and consider its potential to circumvent the fatal flaws of CBF, leveraging a new emerging technology to possibly resurrect an old idea for a practical fusion reactor that promises to be more modular and sustainable than the current leading class of thermonuclear candidates.
+Nuclear fusion power concepts based on the collision of individual pairs of atoms are an appealing alternative to the extreme temperatures and pressures that currently hinder thermonuclear fusion reactors from scaling as a sustainable source of energy. Collision-based schemes and applications appear in the literature as far back as the 1970s, but progress stalled because of fundamental issues resulting from the parabolic dispersion relation of atoms in free space -- significant energy is expended to accelerate atoms to a critical velocity, which in turn decreases the de Broglie wavelength and probability of quantum tunneling through the Coulomb barrier. Since those attempts, significant progress has been achieved in optical lattice designs that allow ultracold atoms to follow a fundamentally different \textit{linear} dispersion relation, allowing for one-dimensional transport modes with high velocity and long wavelength at low energy. Moreover, these modes, which appear along certain topological phase transitions, cannot decelerate or backscatter, and are energetically separated from bulk scattering states. Not only is the desired optical lattice feasible with current laser technology, the salient properties are tuneable with remarkable flexibility and control. In this perspective, we propose that this emerging technology is the ideal environment to revive the study of practical nuclear fusion reactors based on the collision of individual pairs of atoms, with the promise of being more modular and sustainable than any of the leading thermonuclear fusion candidates.
+
 
 % \keywords{Colliding Beam \and Fusion \and Condensed Matter \and 1-D Systems \and Topological States \and Cold Atoms.}
 \end{abstract}
@@ -96,17 +104,13 @@ Colliding Beam Fusion (CBF) is a fusion power concept composed of two or more be
 
 \section{Introduction}
 
-Before digging into the detail, it will be helpful to first provide a visual aid for the previous and proposed forms of Colliding Beam Fusion (CBF) and reiterate why this is worthy of further investigation. The most naive approach for CBF is shown in Fig. \ref{subfig:CBF}, and the proposal for Topological Colliding Beam Fusion (TCBF) is shown in Fig. \ref{subfig:TCBF}. The three key enhancements in the proposed form are the following:
+Nuclear fusion reactors have been a topic of immense interest for decades -- a viable nuclear fusion reactor could provide immense amounts of clean energy to help resolve long-standing concerns of climate change caused by fossil fuels and increasing global energy demand.
 
-\begin{enumerate}
-  \item The variable cost of accelerating fusible atoms to a critical velocity is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield.
-  \item In CBF, there exists a continuum of scattering states near the energy of the atoms. High-energy atoms scatter and decelerate, decreasing likelihood of fusion. The fundamental flaw of CBF is that the energy lost to this (so-called bremsstrahlung loss) is prohibitively large \cite{Ridder1994}. In TCBF, however, atoms in topological edge modes are protected from back-scattering into the other edge mode \cite{RevModPhys.83.1057}, and are energetically separated from bulk bands. There is no continuum of states in which to decelerate, and bremsstrahlung loss should effectively be zero in the ideal band structure shown in Fig. \ref{subfig:TCBF}. The absence of lower-velocity scattering states to decelerate into should also decrease the critical edge mode velocity needed for fusion, though estimation of this remains an open question.
-  \item The concentration of atoms in the transverse directions should be much higher. In CBF, the beam cross sections are on the order of $1000~\text{cm}^2$ (although this is likely much lower with current technology) and suffer from nonzero beam divergence from the aperture, following a $1/r^2$ relationship \cite{blewett197xcbf}. In TCBF the atoms in the edge modes are confined to two counter-propagating, effectively one-dimensional channels, following a $e^{-r^2}$ relationship (see Sec \ref{sec:CondMat} for detail).
-\end{enumerate}
+Virtually every current initiative to achieve practical nuclear fusion belongs to the class of thermodynamic nuclear fusion (e.g. magnetic and inertial confinement fusion concepts). A bulk fuel source is confined into an environment of immense temperature and pressure to force atomic nuclei close enough that the attractive nuclear force overcomes their Coulomb repulsion, fusing them into heavier nuclei and releasing energy. Creating such an environment is an extremely difficult engineering challenge, and it is an open question whether a net positive energy can ever sustainably be harvested from a thermodynamic fusion reactor.
 
-The next three subsections provide a literature review and further detail for each research field TCBF attempts to bring together. In Sec. \ref{sec:CBF} we provide a brief review of CBF, emphasizing with some numbers why it isn't viable. In Sec. \ref{sec:CondMat} we provide a brief review of topological order in condensed matter systems, emphasizing the existence of one-dimensional electronic modes in certain systems and the traits that make topological states of matter uniquely suited to circumvent the flaws of CBF. In Sec. \ref{sec:ColdAtoms} we extend this idea to atomic states in cold atom systems, emphasizing that cold atom systems provide the perfect playground to indirectly tune scattering and fusion rates, by way of bulk band gap and edge mode velocity. 
+Nuclear fusion is inherently a microscopic reaction between two atomic nuclei. An environment of immense temperature and pressure is not mandatory for it to occur. One alternative, dating back at least to the 1970s, is to collide two beams of atomic nuclei at high enough velocity to overcome Coulomb repulsion and trigger fusion, known as Colliding Beam Fusion (CBF) \cite{MAGLICH1973213,MAGLICH1975IEEE,blewett197xcbf}. 
 
-Those familiar with these fields are safe to skip to Sec. \ref{sec:conclusion}, where we pose and consider open questions and concerns. Ultimately, viability of TCBF will depend on estimating fusion and scattering rates based on the highest achievable edge mode velocity and bulk band gap separation.
+The most naive CBF design is shown in Fig. \ref{subfig:CBF}. While CBF was able to trigger nuclear fusion, it failed to produce a net positive energy (see Appendix \ref{sec:CBF} for a brief review). The fatal flaw ultimately lies in the parabolic dispersion relation of atoms in free space (see Table \ref{tab:dispersion}). Significant energy is needed to accelerate atoms to a sufficient velocity, resulting in a short wavelength that degrades the probability of quantum tunneling and greatly suppresses fusion cross section ($\sigma_F \propto \lambda^2$). Furthermore, atoms scatter off one another and disperse into a continuum of states, further decreasing the likelihood of fusion. The energy lost to this (so-called bremsstrahlung loss) is prohibitively large to ever yield a net positive energy \cite{Ridder1994}, and for these reasons CBF research appears to have stalled in the 1990s.
 
 
 \begin{figure}[H]
@@ -118,33 +122,84 @@ Those familiar with these fields are safe to skip to Sec. \ref{sec:conclusion}, 
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/TCBF.png}
+    \includegraphics[width=0.8\linewidth]{figures/UCF.png}
     \caption{}
-    \label{subfig:TCBF}
+    \label{subfig:UCF}
 \end{subfigure}
-\caption{a) In the most naive approach for CBF, fusible atoms A (blue) and B (red) are projected towards one another at sufficient velocity to trigger fusion (inset \#1), but most particles in the beam are lost to scattering and screening effects (inset \#2). \textit{Top-right}: parabolic dispersion relation for massive particles in a vacuum, indicating the amount of energy needed to reach critical velocity (purple dashed line). b) Proposal for TCBF in a cold atom system in the topologically nontrivial (Floquet) Quantum Spin Hall state. Two 1-D edge modes (purple) rest at the phase transition between the topologically nontrivial (green) and trivial (white) regions. Fusible atoms A and B in these edge modes are exponentially pinned to the surface (inset, shaded blue and red). \textit{Top-right}: idealized linear dispersion relation for the Floquet Quantum Spin Hall state, where topological edges modes (red and blue lines) are energetically separated from bulk states (black lines). In a sufficiently strong topological phase, critical velocity could be reached at zero energy.}
+\caption{a) In the most naive approach for CBF, fusible atoms A (blue) and B (red) collide with one another at sufficient velocity to trigger fusion (inset \#1), but too much energy is lost to scattering and screening effects to achieve a net positive (inset \#2). \textit{Top-right}: parabolic dispersion relation for massive particles in a vacuum, indicating the amount of energy needed to reach critical velocity (purple dashed line). b) Proposal for collision-based fusion of ultracold atoms along the topologically nontrivial (Floquet) Quantum Spin Hall state. Two 1-D edge modes (purple) reside along the phase transition between the topologically nontrivial (green) and trivial (white) regions. Fusible atoms A and B in these edge modes are exponentially pinned to the surface (inset, shaded blue and red). \textit{Top-right}: idealized linear dispersion relation for the Floquet Quantum Spin Hall state, where topological edges modes (red and blue lines) are energetically separated from bulk states (black lines). The location of the band crossing is dictated by the topological phase and optical lattice, though ideally would cross at vanishing energy and wave number.}
 \end{figure}
 
-\subsection{Colliding Beam Fusion}\label{sec:CBF}
 
-CBF dates back to at least 1973 \cite{MAGLICH1973213}. CBF has been proposed for a wide range of output-power levels (MWs to GWs) and fuels, such as D-D, D-T, D-He$^3$, H-B$^11$, and H-Li$^6$ (D and T here denote deuterium an tritium) \cite{doi:10.1063/1.1649593, doi:10.1063/1.1475683}. The same degrees of freedom hold for TCBF.
+\section{New Perspective}
 
-To highlight the fatal flaw of CBF, we summarize the most naive approach for a D-T fusion reaction: 
+High-speed atoms in free space will have high energy and short wavelength. We require the opposite relation for CBF to be viable -- high-speed, low energy, and long wavelength (i.e. nuclei are wave-like rather than point-like, so that the wave functions of their nuclei overlap). Condensed matter physicists have shown charged particles can have fundamentally different behavior in a periodic potential vs. free space. 
+Indeed, the modes exhibiting the desired dispersion relation have been shown to exist along the boundary of certain topological phase transitions (see Appendix \ref{sec:CondMat} for a brief review). Namely, a signature of the Quantum Spin Hall (QSH) topological phase is a pair of counter-propagating, high speed, one-dimensional modes along the phase transition.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|M||M|M|M|}
+ \hline
+ Scheme&Dispersion Relation&Group Velocity&Wavelength\\
+ \hline
+ \multirow{2}{*}{CBF (1970s)}&$E=\frac{\hbar^2k^2}{2m}$&$v=\frac{\hbar k}{m}$&$\lambda = \frac{\hbar}{mv}$\\
+ &(100 keV)&($10^6$ m/s)&(10 pm) \\
+ \hline
+ \multirow{2}{*}{Ultracold Fusion Proposal}&$E=\hbar v_F k$&$v_F$ (independent of E)&independent\\
+ &($\lll$ 1 keV)&\textbf{(TBD)}&($\ggg$ 1 nm) \\
+ \hline
+\end{tabular}
+\caption{Comparison of critical parameter relationships in conventional CBF vs. ultracold fusion proposal. Typical ranges needed for deuterium-tritium fusion are shown in parentheses.}
+\label{tab:dispersion}
+\end{table}
+
+Optical lattices (i.e. lattices created from laser light) are an emerging technology for the control and manipulation of ultracold atomic nuclei (see Appendix \ref{sec:ColdAtoms} for a brief review). What holds for electrons in an atomic lattice also holds for atomic nuclei in optical lattices. Topological phases have been experimentally realized in optical lattices, and several proposals exist for the desired QSH phase. This is the perfect environment to overcome the fatal flaws of CBF. 
+
+The proposed "Ultracold Fusion" design is depicted in Fig. \ref{subfig:UCF} -- place ultracold atomic nuclei in the counter-propagating, high-speed, high-wavelength modes that appear along the boundary of an optical lattice in a QSH topological phase. The key enhancements in the proposed form are the following:
+
+\begin{enumerate}
+  \item Ultracold atoms following a linear dispersion are much more likely to quantum tunnel than atoms following parabolic dispersion in free space.
+  \item The significant variable cost of accelerating atomic nuclei to a critical velocity in free space is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield.
+  \item  Atoms in free space have a continuum of scattering states in which to decelerate or change trajectory. Ultracold atoms in topological edge modes are protected from backscattering and are energetically separated from bulk bands \cite{RevModPhys.83.1057}. Bremsstrahlung loss should effectively be zero in the ideal band structure shown in Fig. \ref{subfig:UCF}, and while scattering into bulk states is still possible at least no energy will be lost to it. 
+  \item The concentration of atoms in the transverse directions should be much higher. In CBF, the beam cross sections are on the order of $1000~\text{cm}^2$ (although this is likely much lower with current technology) and disperse outward from the aperture, following a $1/r^2$ relationship \cite{blewett197xcbf}. In the proposed design, atoms are confined to a pair of counter-propagating, effectively one-dimensional channels, following a $e^{-r^2}$ relationship (see Appendix \ref{sec:CondMat} for more detail).
+\end{enumerate}
+
+
+\section{Conclusion \& Open Questions}\label{sec:conclusion}
+
+Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility. It is an open question to estimate how much this is improved for atoms with linear dispersion and high wavelength.
+
+The design of optical lattices to induce nuclear fusion of ultracold atomic nuclei offers a promising playground to revisit CBF. Optical lattices provide flexible control over the salient features for fusion -- transverse spatial confinement of edge modes, velocity of edge modes, and band gap from bulk states. Here, we simply hope to have motivated it as a promising general framework that merits further exploration, and conclude with some open questions:
+
+\begin{enumerate}
+\item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-locked (i.e. atoms moving clockwise are spin-up while atoms moving counter-clockwise are spin-down), would this have an effect on the scattering trajectory of the resultant high-energy output particles?
+\item \textit{How do the empirically-determined values for fusion cross section vs. colliding velocity (Fig. 1 in \cite{MAGLICH1975IEEE}) improve in a topological cold atom system?} Atoms in the edge modes behave as effectively massless Dirac particles with qualitatively different dispersion than what would arise in a vacuum. There are far fewer scattering states compared to the continuum setting, all of which are bulk states energetically separated from the gapless edge modes. This should translate to much lower scattering, the absence of bremsstrahlung loss, and an improved fusion cross section. How can this be estimated? Practical applications aside, this appears to be a promising environment for probing unique physics.
+\item \textit{What happens if fusion does occur?} The resultant high-energy (14 MeV) neutron as a charge-free particle would not be bound to the edge mode. Its energy could presumably be captured as heat in a heavy water reservoir. The resultant charged particle would have energy on the order of MeV, far exceeding the band gap, and could be captured easily. Could it inadvertently damage the optical lattice or FQSH state? 
+\item \textit {What happens if fusion does not occur?} Edge modes atoms would either pass by one another or scatter into bulk states. Even if there is only a low probability that two counter-propagating atoms fuse, if the lifetime of an edge mode atomic state is long, it could feasibly pass by many counter-propagating atoms, increasing the number of chances it has to fuse provided scattering rates are low and atoms in edge mode states have long lifetimes.
+\end{enumerate}
+
+
+
+\bibliography{biblio}
+
+\pagebreak
+\begin{appendices}
+\section{Colliding Beam Fusion}\label{sec:CBF}
+
+CBF dates back to at least 1973 \cite{MAGLICH1973213}. CBF has been proposed for a wide range of output-power levels (MWs to GWs) and fuels, such as D-D, D-T, D-He$^3$, H-B$^11$, and H-Li$^6$ (D and T here denote deuterium and tritium) \cite{doi:10.1063/1.1649593, doi:10.1063/1.1475683}. To highlight the fatal flaw of CBF, we summarize the most naive approach for a D-T fusion reaction: 
 
 \begin{equation}
     \textrm{deuteron} + \textrm{triton} \rightarrow \alpha + \textrm{neutron}
 \label{eq:fusionreaction}
 \end{equation}
 
-All numbers are pulled from ref. \cite{blewett197xcbf}. At 100 keV, i.e. when the atoms differ in velocity by $3\times10^6\textrm{m/sec}$, the reaction cross section has a max of $\sigma_f \approx 5 \textrm{barns}$ (see Fig. 1 of Maglich et al. \cite{MAGLICH1975IEEE} for a more comprehensive chart of fusion cross section vs. beam energy). Of the 17 MeV of energy produced on the right hand side, 14 MeV resides on the neutron as kinetic energy. Given a beam with cross section of 1000 cm$^2$ and D/T atom concentrations of $6\times10^{18} \textrm{m}^{-3}$, ref. \cite{blewett197xcbf} estimates a fusion yield of 0.65 W per meter of distance along the colliding beams, an extremely poor yield given 60 MW have gone into producing the two colliding beams. Although this naive setup can be improved with magnetic confinement or by recycling the ions in a cylindrical setting to allow them more opportunities to fuse, the fusion cross section is simply too small relative to the spatial confinement of the beams to ever be viable. Screening and scattering effects degrade the fidelity of the beams.
+All numbers are pulled from ref. \cite{blewett197xcbf}. At 100 keV, i.e. when the atoms differ in velocity by $3\times10^6\textrm{m/s}$, the reaction cross section has a max of $\sigma_f \approx 5 \textrm{barns}$ (see Fig. 1 of Maglich et al. \cite{MAGLICH1975IEEE} for a more comprehensive chart of fusion cross section vs. beam energy). Of the 17 MeV of energy produced on the right hand side, 14 MeV resides on the neutron as kinetic energy. Given a beam width cross section of 1000 cm$^2$ and D/T atom concentrations of $6\times10^{18} \textrm{m}^{-3}$, ref. \cite{blewett197xcbf} estimates a fusion yield of 0.65 W per meter of distance along the colliding beams, an extremely poor yield given 60 MW have gone into producing the two colliding beams. Although this naive setup can be improved with magnetic confinement or by recycling the ions in a cylindrical setting to allow multiple opportunities to fuse, the fusion cross section is simply too small relative to the spatial confinement of the beams to ever be viable. Screening and scattering effects further degrade the fidelity of the beams.
 
-The optimal configuration for CBF would consist of two counter-propagating, one-dimensional modes with high velocity in the longitudinal direction, strong spatial confinement in the transverse directions, and separation in energy from any other state to limit scattering. In the next section, we will show that this already exists in topologically non-trivial condensed matter and cold atom systems.
 
-\subsection{Topological Order in Condensed Matter}\label{sec:CondMat}
+\section{Topological Order in Condensed Matter}\label{sec:CondMat}
 
 There is a rich history of the study of topological order in condensed matter systems dating back to the late 1980s \cite{Wen_2013}. We focus on Topological Insulators, a relatively new state of quantum matter characterized by a full insulating gap and a nontrivial topological order parameter we denote $m<0$ \cite{RevModPhys.83.1057}. The existence of topological order in an insulator exhibits unique behavior, the most universal and remarkable one (and the most important for us) being the existence of gapless edge or surface states at the boundary with a state of trivial topological order $m>0$ (i.e. at the phase transition) \cite{FRUCHART2013779}.
 
-We are concerned with one-dimensional helical edge modes, i.e. two counter-propagating edge modes of opposite spin. A 2D topological insulator, also known as a Quantum Spin Hall (QSH) insulator, is shown with edge modes and dispersion in Fig. \ref{subfig:QSH}. The electronic edge mode wave function is (see Section 3.5.7 of \cite{FRUCHART2013779} for a nice derivation):
+We are concerned with one-dimensional helical edge modes, i.e. two counter-propagating edge modes of opposite spin. A 2D topological insulator, also known as a Quantum Spin Hall (QSH) insulator, is shown with edge modes and dispersion in Fig. \ref{subfig:QSH}. The theory, prediction, and experimental realization of the QSH effect date to the mid 2000s \cite{PhysRevLett.95.146802,PhysRevLett.95.226801,doi:10.1126/science.1133734,doi:10.1126/science.1148047}. The electronic edge mode wave function is (see Section 3.5.7 of \cite{FRUCHART2013779} for a nice derivation):
 
 \begin{equation}
     \psi (x,y) \propto e^{iq_xx} \exp \left[-\int_{0}^{y} m(y') dy'\right] \begin{bmatrix}1 \\ 1\end{bmatrix},
@@ -169,37 +224,34 @@ where $x$ and $y$ are the longitudinal and transverse directions, respectively. 
 \caption{a) The Quantum Spin Hall insulator necessitates gapless, counter-propagating 1D helical edge modes of opposite spin and linear dispersion. Image from \cite{RevModPhys.83.1057}. Red denotes spin-up, blue denotes spin-down. b) The edge state wave function is exponentially pinned at the phase transition where mass gap $m(y)$ goes from negative to positive. Image from \cite{FRUCHART2013779}.}
 \end{figure}
 
-Two additional traits, not found in CBF, are critical for the motivation of TCBF. First, these edge modes are protected from back scattering by time-reversal symmetry; all possible back scattering paths destructively interfere as long as impurities are nonmagnetic \cite{RevModPhys.83.1057}. Second, edge modes have linear dispersion -- electronic quasiparticles are effectively massless and have high velocity (which is proportional to the slope of the dispersion, $v \propto \frac{\delta\epsilon}{\delta k}$) even at low energy. In CBF, a significant amount of power was needed to create beams with high enough velocity to overcome the Coulomb barrier, much of which was then lost to scattering and screening effects. The same velocity can be realized for low- or zero-energy quasiparticles in these edge states, which are then protected from scattering.
+Two additional traits, not found in CBF, are critical. First, these edge modes are protected from backscattering by time-reversal symmetry; all possible backscattering paths destructively interfere as long as impurities are nonmagnetic \cite{RevModPhys.83.1057}. Second, edge modes have linear dispersion -- electronic quasiparticles are effectively massless and have high velocity (which is proportional to the slope of the dispersion, $v \propto \frac{\delta\epsilon}{\delta k}$) even at low energy. In CBF, a significant amount of energy was needed to create beams with high enough velocity to overcome the Coulomb barrier, much of which was then lost to scattering and screening effects. The same velocity can be realized for low- or zero-energy quasiparticles in these edge states.
 
-The theory, prediction, and experimental realization of the QSH effect date to the mid 2000s \cite{PhysRevLett.95.146802,PhysRevLett.95.226801,doi:10.1126/science.1133734,doi:10.1126/science.1148047}. The edges modes in the QSH effect are desirable in an optimal TCBF setup, but so far we have only considered electronic states. The same argument doesn't hold for atomic transport. In the next section, we review evidence of topological states of matter in ultracold atom systems, and proposals for the QSH effect for atomic states in ultracold atom systems.
 
-\subsection{Ultracold Atoms and Atomtronics}\label{sec:ColdAtoms}
+\section{Ultracold Atoms and Atomtronics}\label{sec:ColdAtoms}
 
-Ultracold atom systems use laser cooling and magneto-optic traps to spatially confine atoms at temperatures close to absolute zero. These systems allow for a remarkable deal of flexibility and control, from experimental realization of exotic states like Bose-Einstein condensates \cite{RevModPhys.80.885} to applications in quantum computing \cite{PhysRevResearch.3.013113}. Additionally, they provide a platform for creating and simulating in an optical lattice a variety of models initially introduced in condensed matter physics \cite{TARRUELL2018365,Sch_fer_2020}. This has simultaneously paved the way for another field coined "atomtronics" \cite{Amico_2021}, which deals with the engineered manipulation of ultra-cold atoms, through magnetic or laser-generated guides, to create atomic components analogous to electronic components, e.g. diodes and transistors.
+Ultracold atom systems use laser cooling and magneto-optic traps to spatially confine and manipulate atoms at temperatures close to absolute zero. These systems allow for a remarkable deal of flexibility and control, from experimental realization of exotic states like Bose-Einstein condensates \cite{RevModPhys.80.885} to applications in quantum computing \cite{PhysRevResearch.3.013113}. Additionally, they provide a platform for creating and simulating in an optical lattice a variety of models initially introduced in condensed matter physics \cite{TARRUELL2018365,Sch_fer_2020}. This has simultaneously paved the way for another field coined "atomtronics" \cite{Amico_2021}, which deals with the engineered manipulation of ultracold atoms, through magnetic or laser-generated guides, to create atomic components analogous to electronic components, e.g. diodes and transistors.
 
 Topological phases in cold atom systems have been realized for a number of toy models originally proposed in condensed matter physics \cite{Zhang_2018,Wintersperger_2020}. More recently, Braun et al. \cite{braun2023realspace} create a topological phase in a 2D Floquet system (i.e. with time periodic hopping), driving the system from a topologically trivial to non-trivial state with a periodic optical potential that preserves time-reversal symmetry and observing signatures of topological phase changes with with real-space measurements of the edge current.
 
 Although these are chiral currents in a single direction and no published experimental realization of the QSH effect in cold atom systems has been reported to our knowledge, several papers propose schemes for creating it \cite{PhysRevLett.111.225301,PhysRevA.82.053605,PhysRevLett.109.205303,PhysRevLett.105.255302,Yan2015} and observing it \cite{doi:10.1073/pnas.1300170110} with similar Floquet dynamics. As a point of emphasis, Zhang et al. \cite{Yan2015} comment "the edge states are helical in the sense that fermionic atoms with opposite spin propagate in opposite direction". According to the PI of \cite{braun2023realspace}, this amounts to tuning to a different region of the phase diagram, and in principle there is no particular reason why this in principle should not be possible \cite{AidelsburgerPrivateComm}. 
 
-The FQSH state thus provides the necessary qualities outlined in the Introduction, with many degrees of freedom for finding the optimal configuration. Note the band structure diagram in Fig. \ref{subfig:TI-wavefunction} can be (1) stretched in the vertical direction by scaling up every hopping energy and frequency in the optical lattice Hamiltonian by the same factor, or (2) squeezed in the horizontal direction by scaling down the optical lattice constant. Edge mode velocity, bulk band gap, and spatial confinement are all implicitly tuneable. We conclude this section by considering the system requirements to achieve fusible edge mode velocities.
+\subsection{Achieving Critical Velocity}\label{sec:critvel}
 
-Braun et al. \cite{braun2023realspace} report velocities on the order of mm/s with a laser wavelength $\lambda_L=745$ nm, hexagonal optical lattice spacing of $a=287$ nm, and Floquet frequencies in the kHz regime. This is far below the critical velocities on the order of $10^6$ m/s discussed in Sec. \ref{sec:CBF}, however the edge mode velocity scales very favorably with respect to the wavelength of the optical lattice laser $lambda_L$. Hopping energies are set by the Floquet frequencies and the recoil energy, $E_r=\hbar^2k_L^2/2M\propto 1/\lambda_L^2$ \cite{Sch_fer_2020}, and the lattice constant scales directly ($a \propto \lambda_L$). Edge mode velocity with linear dispersion will thus scale $v \propto 1/\lambda_L^3$, two orders of magnitude coming from the energy scaling and one order of magnitude coming from the lattice constant scaling.
+The FQSH state thus provides the necessary qualities outlined above, with many degrees of freedom for finding the optimal configuration. Note the band structure diagram in Fig. \ref{subfig:UCF} can be (1) stretched in the vertical direction by scaling every energy and frequency in the optical lattice Hamiltonian by the same factor, or (2) squeezed in the horizontal direction by scaling down the optical lattice constant. Edge mode velocity, bulk band gap, and spatial confinement are all implicitly tuneable. We conclude this section by considering the system requirements to achieve fusible edge mode velocities.
+
+Braun et al. \cite{braun2023realspace} report velocities on the order of mm/s with a laser wavelength $\lambda_L=745$ nm, hexagonal optical lattice spacing of $a=287$ nm, and Floquet frequencies in the kHz regime. This is rouhgly 9 orders of magnitude below the critical velocities on the order of $10^6$ m/s discussed in Appendix \ref{sec:CBF}. Fortunately, edge mode velocity scales very favorably with respect to optical lattice laser wavelength $\lambda_L$. Hopping energies are set by the Floquet frequencies and the recoil energy \cite{Sch_fer_2020}, 
+\begin{equation}
+    E_r=\frac{\hbar^2k_L^2}{2M}\propto \frac{1}{\lambda_L^2},
+\end{equation}
+and the lattice constant scales directly with laser wavelength, $a \propto \lambda_L$. Edge mode velocity with linear dispersion will thus scale 
+\begin{equation}
+v \propto \frac{1}{\lambda_L^3},
+\end{equation}
+two orders of magnitude coming from the energy scaling and one order of magnitude coming from the lattice constant scaling.
 
 Critical velocities on the order of $10^6$ m/s should not be necessary in topological bands, however we will use it as an absolute upper bound for lack of a better answer. Velocity would have to increase by roughly 9 orders of magnitude from mm/s, which would necessitate an optical lattice laser wavelength roughly 3 orders of magnitude smaller accompanied by a scaling of all hopping energies and Floquet frequencies by 6 orders of magnitude. This would require 0.75 nm wavelength optical lattices and Floquet frequencies in the GHz regime. The current world record for shortest laser wavelength is 0.15 nm \cite{Yoneda2015}, though such an energy scaling could very well introduce unwanted higher-order / non-linear effects that degrade the system or introduce other hurdles. We reiterate though that this would be an upper bound on critical velocity, sub-nm wavelength lasers are likely not necessary. This estimation remains as the key open question.
 
 
-\section{Conclusion \& Open Questions}\label{sec:conclusion}
+\end{appendices}
 
-2D topological cold atom systems appear to be a promising playground to revisit CBF. They provide flexible control over the salient features for fusion -- transverse spatial confinement of edge modes, velocity of edge modes, and band gap from bulk states. Here, we simply hope to have motivated TCBF as a promising general framework meriting further exploration, and end with some open questions:
-
-\begin{enumerate}
-\item \textit{How do the empirically-determined values for fusion cross section vs. colliding velocity (Fig. 1 in \cite{MAGLICH1975IEEE}) improve in a topological cold atom system?} Atoms in the edge modes behave as effectively massless Dirac particles with qualitatively different dispersion than what would arise in a vacuum. There are far fewer scattering states compared to the continuum setting, all of which are bulk states energetically separated from the gapless edge modes. This should translate to much lower scattering, the absence of bremsstrahlung loss, and an improved fusion cross section. How can this be estimated? Practical applications aside, this appears to be a promising environment for probing unique physics.
-\item \textit{What happens if fusion does occur?} The resultant high-energy (14 MeV) neutron as a charge-free particle would not be bound to the edge mode. Its energy could presumably be captured as heat in a heavy water reservoir. The resultant charged particle would have energy on the order of MeV, far exceeding the band gap, and could be captured easily. Could it inadvertently damage the optical lattice or FQSH state? Atoms in the edge modes are spin-locked (i.e. clockwise atoms are spin-up and counter-clockwise are spin-down), would this have an effect on the scattering trajectory of the resultant high-energy output particles?
-\item \textit {What happens if fusion does not occur?} Edge modes atoms would either pass by one another or scatter into bulk states. Even if there is only a low probability that two counter-propagating atoms fuse, if the lifetime of an edge mode atomic state is long, it could feasibly pass by many counter-propagating atoms, increasing the number of chances it has to fuse provided scattering rates are low and atoms in edge mode states have long lifetimes.
-\end{enumerate}
-
-
-
-\bibliography{biblio}
-%
 \end{document}
