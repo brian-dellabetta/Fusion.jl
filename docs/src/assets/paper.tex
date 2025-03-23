@@ -27,8 +27,7 @@
 \tcbuselibrary{minted,breakable,xparse,skins}
 
 \usepackage[table]{xcolor}
-\setlength{\arrayrulewidth}{0.5mm}
-\setlength{\tabcolsep}{14pt}
+\setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{2.5}
 \usepackage{multirow}
 
@@ -84,7 +83,7 @@
 
 \begin{document}
 
-\title{Ultracold Fusion -- Designing Optical Lattices Suitable for Collision-Based Nuclear Fusion of Ultracold Atoms}
+\title{``Ultracold Fusion'' -- Designing Optical Lattices Most Conducive to the Fusion of Ultracold Atomic Nuclei}
 
 \author{Brian Dellabetta}
 \email{Correspondence: brian.dellabetta@gmail.com}
@@ -94,7 +93,7 @@
 \date{\today}
 %
 \begin{abstract}
-Nuclear fusion power concepts based on the collision of individual pairs of atoms are an appealing alternative to the extreme temperatures and pressures that currently hinder thermonuclear fusion reactors from scaling as a sustainable source of energy. Collision-based schemes and applications appear in the literature as far back as the 1970s, but progress stalled because of fundamental issues resulting from the parabolic dispersion relation of massive atoms in free space -- significant energy is expended to accelerate atoms to a critical velocity, which in turn decreases the de Broglie wavelength and probability of quantum tunneling through the Coulomb barrier. Since those initial investigations, significant progress in ultracold atom technology has shown that carefully designed optical lattices can yield atomic transport modes following a fundamentally different \textit{linear} dispersion relation -- zero effective mass, high velocity, and long wavelength at low energy. Moreover, these modes which appear along certain topological phase transitions, are confined to one dimension, cannot decelerate or backscatter, and are energetically separated from bulk scattering states. In this perspective, we propose that this emerging technology is the ideal environment to revive the study of practical nuclear fusion reactors based on the collision of individual pairs of atoms, with the promise of being more modular and sustainable than any of the leading thermonuclear fusion candidates.
+Nuclear fusion power concepts based on the collision of individual pairs of atoms are an appealing alternative to the extreme temperatures and pressures that currently hinder thermonuclear fusion reactors from scaling as a sustainable source of energy. Collision-based schemes and applications appear in the literature as far back as the 1970s, but progress stalled because of fundamental issues largely stemming from the parabolic dispersion relation of massive atoms in free space -- significant energy is expended to accelerate atoms to a critical velocity, which in turn decreases the de Broglie wavelength and probability of quantum tunneling through the Coulomb barrier. Since those initial investigations, significant progress in ultracold atom technology has shown that carefully designed optical lattices can yield atomic transport modes following a fundamentally different \textit{linear} dispersion relation along certain topological phase transitions -- zero effective mass, high velocity, and long wavelength at low energy. Moreover, these modes are confined to one dimension, cannot decelerate or backscatter, and are energetically separated from bulk scattering states. In this perspective, we propose that this emerging technology is the ideal environment to revive the study of practical nuclear fusion reactors based on the collision of individual pairs of atoms, with the promise of being more modular and sustainable than any of the leading thermonuclear fusion candidates.
 
 % \keywords{Colliding Beam \and Fusion \and Condensed Matter \and 1-D Systems \and Topological States \and Cold Atoms.}
 \end{abstract}
@@ -105,11 +104,11 @@ Nuclear fusion power concepts based on the collision of individual pairs of atom
 
 Nuclear fusion reactors have been a topic of immense interest for decades -- a viable nuclear fusion reactor could provide immense amounts of clean energy to help resolve long-standing concerns of climate change caused by fossil fuels and increasing global energy demand.
 
-Virtually every current initiative to achieve practical nuclear fusion belongs to the class of thermodynamic nuclear fusion (e.g. magnetic and inertial confinement fusion concepts). A bulk fuel source is confined into an environment of immense temperature and pressure to force atomic nuclei close enough that the attractive nuclear force overcomes their Coulomb repulsion, fusing them into heavier nuclei and releasing energy. Creating such an environment is an extremely difficult engineering challenge, and it is an open question whether a net positive energy can ever sustainably be harvested from a thermodynamic fusion reactor.
+Virtually every current initiative to achieve practical nuclear fusion belongs to the class of thermodynamic nuclear fusion (e.g. magnetic and inertial confinement fusion concepts). A bulk fuel source is confined to an environment of immense temperature and pressure to force atomic nuclei close enough to overcome Coulomb repulsion, fusing them into heavier nuclei and releasing energy. Creating such an environment is an extremely difficult engineering challenge, and it is an open question whether a net positive energy can ever sustainably be harvested from a thermodynamic fusion reactor.
 
 An environment of immense temperature and pressure is not mandatory for nuclear fusion, which is inherently a microscopic reaction between two atomic nuclei, to occur. One alternative, dating back at least to the 1970s, is to collide two beams of atomic nuclei at a high enough velocity to overcome Coulomb repulsion and trigger fusion, known as Colliding Beam Fusion (CBF) \cite{MAGLICH1973213,MAGLICH1975IEEE,blewett197xcbf}. 
 
-The most naive CBF design is shown in Fig. \ref{subfig:CBF}. While CBF was able to trigger nuclear fusion, it failed to produce a net positive energy (see Appendix \ref{sec:CBF} for a brief review). The fatal flaw ultimately lies in the parabolic dispersion relation of atoms in free space (see Table \ref{tab:dispersion}). Significant energy is needed to accelerate atoms to a sufficient velocity, resulting in a short wavelength that degrades the probability of quantum tunneling and greatly suppresses fusion cross section ($\sigma_F \propto \lambda^2$). Furthermore, atoms scatter and disperse into a continuum of states, further decreasing the likelihood of fusion. The energy lost to this (so-called bremsstrahlung loss) is prohibitively large to ever yield a net positive energy \cite{Ridder1994}, and for these reasons CBF research appears to have stalled in the 1990s.
+The most naive CBF design is shown in Fig. \ref{subfig:CBF}. While CBF appears in the literature spanning multiple decades, it failed to ever produce a net positive energy (see Appendix \ref{sec:CBF} for a brief review). The fatal flaw ultimately lies in the parabolic dispersion relation of massive atoms in free space (see Table \ref{tab:dispersion}). First and foremost, significant energy ($\sim100$ keV per atom pair) is needed to accelerate atoms to a sufficient velocity, meaning CBF has a high variable energy cost. For massive particles, high energy will result in a short de Broglie wavelength ($E \propto 1/\lambda$), which will decrease so-called ``geometric factor'' of the fusion cross section, $\sigma \propto \lambda_{dB}^2$ \cite{LI20061517}. Furthermore, the energy lost to screening and scattering effects into a continuum of lower-energy states, known as bremsstrahlung loss, is prohibitively large to ever yield a net positive energy \cite{Ridder1994}. For these reasons, CBF research appears to have stalled in the 1990s.
 
 
 \begin{figure}[H]
@@ -131,7 +130,7 @@ The most naive CBF design is shown in Fig. \ref{subfig:CBF}. While CBF was able 
 
 \section{New Perspective}
 
-In free space, high-velocity atoms will have a high energy and a short wavelength. We require the opposite relation for CBF to be viable -- high-speed, low energy, and long wavelength (i.e. nuclei are wave-like rather than point-like, so that the wave functions of their nuclei overlap). Condensed matter physics has shown charged particles can have fundamentally different behavior in a periodic potential vs. free space (see Appendix \ref{sec:CondMat} for a brief review). 
+In free space, high-velocity atoms will have a high energy and a short wavelength. Qualitatively different dispersion is necessary for CBF to be viable -- high-speed, low energy, and long wavelength (i.e. nuclei are wave-like rather than point-like, so that the wave functions of their nuclei overlap). Condensed matter physics has shown charged particles can have fundamentally different behavior in a periodic potential vs. free space (see Appendix \ref{sec:CondMat} for a brief review). 
 Indeed, modes exhibiting the desired dispersion relation have been shown to exist along the boundary of certain topological phase transitions. Namely, a signature of the Quantum Spin Hall (QSH) topological phase is a pair of counterpropagating, high-speed, one-dimensional modes along the phase transition.
 
 \begin{table}[h!]
@@ -140,40 +139,45 @@ Indeed, modes exhibiting the desired dispersion relation have been shown to exis
  \hline
  &CBF (1970s)&Ultracold Fusion Proposal\\
  \hline
- Effective Hamiltonian&$\mathcal{H} \Psi = \frac{-\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}+V\Psi$&$\mathcal{H}\Psi=-i\hbar v_F\frac{\partial \Psi}{\partial x}+V\Psi$\\
+  Hamiltonian Kinetic Operator&$\hat{T} = \frac{-\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2}$&$\hat{T}=-i\hbar v_F\frac{\partial \Psi}{\partial x}$\\
+ \hline
+ Semiclassical Tunneling && \\
+ Particle at $E_0$ into $V(x)=\frac{V_N}{|x|}$&$|\Psi(x)|\propto e^{-(V_N-E_0)x}$&constant, independent of $E_0$\\
+ (Appendix \ref{sec:semiclassicalapproximation}) && \\
  \hline
  Group Velocity&$v\propto E$&$v_F$ (constant)\\
  \hline
  \hline
- Energy&100 keV&$\lll$ 1 keV\\
+ Energy Scale&$\sim100$ keV&$\lll$ 1 keV\\
  \hline
- Wavelength&10 pm&$\ggg$ 1 nm\\
+ Wavelength Scale&$\sim 10$ pm&$\ggg$ 1 nm\\
  \hline
 \end{tabular}
 \caption{Comparison of critical parameter relationships in conventional CBF vs. ultracold fusion proposal, along with typical magnitudes needed for deuterium-tritium fusion.}
 \label{tab:dispersion}
 \end{table}
 
-Optical lattices (i.e. lattices created from laser light) are an emerging technology for the control and manipulation of ultracold atomic nuclei (see Appendix \ref{sec:ColdAtoms} for a brief review). What holds for electrons in an atomic lattice also holds for atomic nuclei in optical lattices. Topological phases have been experimentally realized in optical lattices, and several proposals exist for the desired QSH phase. This is the perfect environment to overcome the fatal flaws of CBF. 
+Optical lattices (i.e. lattices created from laser light) are an emerging technology for the control and manipulation of ultracold atomic nuclei (see Appendix \ref{sec:ColdAtoms} for a brief review). What holds for electrons in a crystalline atomic lattice has also been shown to hold for atomic nuclei in optical lattices. Topological phases have been experimentally realized in optical lattices, and several proposals exist for the desired QSH phase.
 
-The proposed "Ultracold Fusion" design is depicted in Fig. \ref{subfig:UCF} -- cool and place atomic nuclei in the counter-propagating, high-speed, high-wavelength modes that appear along the boundary of an optical lattice in a QSH topological phase. The key enhancements in the proposed form are the following:
+The proposed ``Ultracold Fusion'' design is depicted in Fig. \ref{subfig:UCF} -- cool and place atomic nuclei in the counter-propagating, high-speed, high-wavelength modes that appear along the boundary of an optical lattice in a QSH topological phase. The key enhancements in the proposed form are the following:
 
 \begin{enumerate}
-  \item Ultracold atoms following a linear dispersion are much more likely to quantum tunnel than atoms following parabolic dispersion in free space. TODO add WKB approximation stuff and effects of a longer wavelength
-  \item The significant variable cost of accelerating atomic nuclei to a critical velocity in free space is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield.
-  \item  Atoms in free space have a continuum of scattering states in which to decelerate or change trajectory. Ultracold atoms in topological edge modes are protected from backscattering and are energetically separated from bulk bands \cite{RevModPhys.83.1057}. The loss of bremsstrahlung should effectively be zero in the ideal band structure shown in Fig. \ref{subfig:UCF}, and while scattering in bulk states is still possible, at least no energy will be lost to it. 
-  \item Atoms should be much more concentrated in the transverse direction, significantly increasing the probability of collision. In CBF, the beam cross sections are on the order of $1000~\text{cm}^2$ (although this is likely much lower with current technology) and disperse outward from the aperture, following a $1/r^2$ relationship \cite{blewett197xcbf}. In the proposed design, atoms are confined in low-dimensional modes along the phase transition, following a $e^{-r^2}$ relationship (see Appendix \ref{sec:CondMat} for more details).
+  \item Ultracold atoms following a linear dispersion are much more likely to quantum tunnel than atoms following parabolic dispersion in free space. In the semiclassical picture, the quantum tunneling probability of massive particle decays exponentially with respect to initial energy, whereas quantum tunneling rate of massless particles is \textit{constant}, independent of initial energy (see Appendix \ref{sec:semiclassicalapproximation} for derivation).
+  \item The significant variable cost of accelerating atomic nuclei to a critical velocity in free space is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield. The one-dimensional modes are periodic, so atoms will cycle indefinitely until scattering into bulk states.
+  \item Wavelength of topological edge modes can be designed to be at least a few orders of magnitude higher than picometer-scale ($10^{-12}$ m) wavelengths typical of CBF, resulting in an enhancement of several orders of magnitude on the geometric factor of the fusion cross section, $\sigma \propto \lambda_{dB}^2$ \cite{LI20061517}.
+  \item Atoms in free space have a continuum of scattering states in which to decelerate or change trajectory. Ultracold atoms in topological edge modes are protected from backscattering and are energetically separated from bulk bands \cite{RevModPhys.83.1057}. The loss of bremsstrahlung should effectively be zero in the ideal band structure shown in Fig. \ref{subfig:UCF}, and while scattering in bulk states is still possible, at least no energy will be lost to it. 
+  \item Atoms should be much more concentrated in the transverse direction, significantly increasing the probability of collision. In CBF, the beam cross sections are on the order of $1000~\text{cm}^2$ \cite{blewett197xcbf} (although this is likely much lower with current technology), following a $1/r^2$ relationship \cite{blewett197xcbf} that disperses outward from the aperture. In the proposed design, atoms are confined in low-dimensional modes along the phase transition, following a $e^{-r^2}$ relationship that does not disperse provided it does not scatter into a bulk state (see Appendix \ref{sec:CondMat} for more details).
 \end{enumerate}
 
 
 \section{Conclusion \& Open Questions}\label{sec:conclusion}
 
-Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility (see Appendix \ref{sec:critvel} for detail). \textbf{It is an open question to estimate how much this is improved for atoms with linear dispersion and high wavelength.}
+The design of transport modes most suitable for fusion of ultracold atomic nuclei offers a promising playground to revisit CBF, and potentially circumvent the extreme environments necessary for thermodynamic fusion reactors. Optical lattices provide flexible control over the salient features for fusion -- effective mass, edge mode velocity, spatial confinement in the transverse directions, and band gap energy separation from bulk states. 
 
-The design of optical lattices to induce nuclear fusion of ultracold atomic nuclei offers a promising playground to revisit CBF. Optical lattices provide flexible control over the salient features for fusion -- transverse spatial confinement of edge modes, velocity of edge modes, and band gap from bulk states. Here, we simply hope to have motivated it as a promising general framework that merits further exploration, and conclude with some open questions:
+Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation, beyond the semiclassical picture. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility (see Appendix \ref{sec:critvel} for detail). Here, we simply hope to have motivated a promising general framework meriting further exploration, concluding with some open questions:
 
 \begin{enumerate}
-\item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-locked (i.e. atoms moving clockwise are spin-up while atoms moving counter-clockwise are spin-down), would this have an effect on the scattering trajectory of the resultant high-energy output particles? Practical applications aside, this appears to be a promising environment for probing unique physics.
+\item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-momentum locked, i.e. atoms moving clockwise all have the same spin, which is opposite the spin of atoms moving counter-clockwise). Would this have an effect on the scattering trajectory of the resultant high-energy output particles? Practical applications aside, this appears to be a promising environment for probing some unique physics.
 \item \textit{What happens if fusion does occur?} The resultant high-energy (14 MeV) neutron as a charge-free particle would not be bound to the edge mode. Its energy could presumably be captured as heat in a heavy water reservoir. The resultant charged particle would have energy on the order of MeV, far exceeding the band gap, and could be captured easily. Could it inadvertently damage the optical lattice or FQSH state? 
 \item \textit {What happens if fusion does not occur?} Edge modes atoms would either pass by one another or scatter into bulk states. Even if there is only a low probability that two counter-propagating atoms fuse, if the lifetime of an edge mode atomic state is long, it could feasibly pass by many counter-propagating atoms, increasing the number of chances it has to fuse provided scattering rates are low and atoms in edge mode states have long lifetimes.
 \end{enumerate}
@@ -253,11 +257,11 @@ two orders of magnitude coming from the energy scaling and one order of magnitud
 
 Critical velocities on the order of $10^6$ m/s should not be necessary in topological bands, however we will use it as an absolute upper bound for lack of a better answer. Velocity would have to increase by roughly 9 orders of magnitude from mm/s, which would necessitate an optical lattice laser wavelength roughly 3 orders of magnitude smaller accompanied by a scaling of all hopping energies and Floquet frequencies by 6 orders of magnitude. This would require 0.75 nm wavelength optical lattices and Floquet frequencies in the GHz regime. The current world record for shortest laser wavelength is 0.15 nm \cite{Yoneda2015}, though such an energy scaling could very well introduce unwanted higher-order / non-linear effects that degrade the system or introduce other hurdles. We reiterate though that this would be an upper bound on critical velocity, sub-nm wavelength lasers are likely not necessary. This estimation remains as the key open question.
 
-\section{Semiclassical Approximation of Quantum Tunneling}
+\section{Semiclassical Approximation of Quantum Tunneling}\label{sec:semiclassicalapproximation}
 
-This section will solve the one-dimensional time-independent Schrodinger equation in the semiclassical picture to emphasize the qualitatively different quantum tunneling behavior between linear and parabolic dispersion. We will consider a free particle at energy $E_0$ incident to another particle at rest at $x=0$, so that the Coulomb potential is $V(x)=\frac{V_N}{x}$.
+This section will solve the one-dimensional time-independent Schrodinger equation in the semiclassical picture to emphasize the qualitatively different quantum tunneling behavior between linear and parabolic dispersion. We will consider a free particle at energy $E_0$ moving rightwards toward another particle at rest at $x=0$, so that the Coulomb potential is $V(x)=\frac{V_N}{|x|}$ where $V_N \gg E_0$.
 
-We will study this in the semiclassical limit, i.e. when $V(x)$ is slowly varying with respect to the wavelength of the incident particle. \textit{(Note: it is not clear if the slowly varying potential assumption is valid if V(x) can vary significantly at the fm ($10^{-15}$) scale but wavelengths are on the order of pm ($10^{-12}$) or nm. Nonetheless it is commonly used in theoretical models for nuclear fusion \cite{PhysRevC.110.034614,Liu_2021})}. 
+We will study this in the semiclassical limit, i.e. when $V(x)$ is slowly varying with respect to the wavelength of the incident particle. \textit{(Note: it is not clear if the slowly varying potential assumption is valid if V(x) can vary significantly at the fm ($10^{-15}$) scale but wavelengths are on the order of pm ($10^{-12}$) or nm. Nonetheless it is commonly used in theoretical models for nuclear fusion \cite{PhysRevC.110.034614,Liu_2021,PhysRevC.105.054001})}. 
 
 \subsubsection{Free Space, Parabolic Dispersion}
 
@@ -270,32 +274,40 @@ We first present the results for a massive particle in free space, a common exer
 In the semiclassical limit, the wave function can be written in the form
 
 \begin{equation}
-    \psi(x) = e^{(i/\hbar)\sigma(x)}.
+    \psi(x) = e^{(i/\hbar)p(x)}.
+\end{equation}
+
+where $p(x)$ denotes the localized momentum defined classically by 
+
+\begin{equation}
+p^2(x)/2m +V(x) = E.
 \end{equation}
 
 The solution to this problem, to leading order, is widely known as the WKB approximation,
 
 \begin{equation}
-    \psi(x) = e^{(i/\hbar)\int\sqrt{2m(E-V(x)}}.
+\begin{split}
+    \psi(x) &= \exp \big[\frac{i}{\hbar}\int\sqrt{2m(E-V(x))}dx \big] \\ &= \exp \big[ \frac{-1}{\hbar}\int\sqrt{(2m(V_N-E_0)/x)}dx \big].
+\end{split}
 \end{equation}
 
- Quantum tunneling probability decays exponentially into the barrier:
+Quantum tunneling probability thus decays exponentially into the Coulomb barrier:
 
 \begin{equation}
-    \boxed{\psi(x) \propto e^{(i/\hbar)\sqrt{2m(V_N-E_0)x}}}.
+    \boxed{\psi(x) \propto e^{(-\sqrt{2m(V_N-E_0)x}/\hbar)}}.
 \end{equation}
 
-Tunneling rate likewise decays exponentially, greatly suppressing tunneling rate and requiring a high energy incident particle to achieve fusion.
+A high incident energy is required for massive particles to overcome Coulomb repulsion and achieve fusion.
 
 \subsubsection{Topological Edge Mode, Linear Dispersion}
 
-The result in this case is both simpler to derive, involves no WKB-style approximation, and is much more favorable. Here the time independent Schrodinger equation is
+The result in the case of massless particle is simpler to derive, involves no WKB-style approximation, and is much more favorable. Here the time independent Schrodinger equation is
 
 \begin{equation}
     -i\hbar v_F \frac{d\psi(x)}{dx} + V(x)\psi(x) = E\psi(x),
 \end{equation}
 
-which, for an incident particle of energy $E_0$ and a Coulomb potential $V(x)=\frac{V_N}{x}$, results in a first-order ODE
+which, for an incident particle of energy $E_0$ and a Coulomb potential $V(x)=\frac{V_N}{|x|}$, results in a first-order ODE
 
 \begin{equation}
     \frac{d\psi(x)}{dx} = \frac{i(V_N-E_0)}{\hbar v_F}\frac{\psi(x)}{x}.
@@ -307,7 +319,7 @@ Noting that the solution to $\frac{dy}{dx}=\frac{Cy}{x}$ is $y(x)=c_1x^{A}$, thi
     \boxed{\psi(x) = x^{i(V_N-E_0)/(\hbar v_F)}}.
 \end{equation}
 
-that oscillates in $x$ with a frequency that increases as the particle approaches $x=0$, but \textbf{does not decay into the barrier}. $|\psi(x)|^2$ in this case is a constant value independent of tunneling distance $x$. In the semiclassical limit, atoms counterpropagating along topological edge modes will collide and tunnel with a probability independent of incident energy or velocity. \textit{Is this the right interpretation?}
+that oscillates in $x$ with a frequency that increases as the particle approaches $x=0$, but \textbf{does not decay into the barrier}. $|\psi(x)|^2$ in this case is a constant value independent of incident energy $E_0$. In the semiclassical limit, atoms counterpropagating along topological edge modes will collide and tunnel with a probability independent of incident energy or velocity. \textit{Is this the right interpretation?}
 
 \end{appendices}
 
