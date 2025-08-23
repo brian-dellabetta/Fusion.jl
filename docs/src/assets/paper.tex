@@ -163,7 +163,7 @@ The proposed ``Ultracold Fusion'' design is depicted in Fig. \ref{subfig:UCF} --
 
 \begin{enumerate}
   \item Ultracold atoms following a linear dispersion are much more likely to quantum tunnel than atoms following parabolic dispersion in free space. In the semiclassical picture, the quantum tunneling probability of massive particle decays exponentially with respect to initial energy, whereas quantum tunneling rate of massless particles is \textit{constant}, independent of initial energy (see Appendix \ref{sec:semiclassicalapproximation} for derivation).
-  \item The significant variable cost of accelerating atomic nuclei to a critical velocity in free space is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield. The one-dimensional modes are periodic, so atoms will cycle indefinitely until scattering into bulk states.
+  \item The variable cost of accelerating atomic nuclei to a critical velocity in free space is converted to a fixed cost of operating the optical lattice, so a low fusion rate need not be a deal-breaker for positive energy yield. The one-dimensional modes are periodic, so atoms will cycle indefinitely until scattering into bulk states.
   \item Wavelength of topological edge modes can be designed to be at least a few orders of magnitude higher than picometer-scale ($10^{-12}$ m) wavelengths typical of CBF, resulting in an enhancement of several orders of magnitude on the geometric factor of the fusion cross section, $\sigma \propto \lambda_{dB}^2$ \cite{LI20061517}.
   \item Atoms in free space have a continuum of scattering states in which to decelerate or change trajectory. Ultracold atoms in topological edge modes are protected from backscattering and are energetically separated from bulk bands \cite{RevModPhys.83.1057}. The loss of bremsstrahlung should effectively be zero in the ideal band structure shown in Fig. \ref{subfig:UCF}, and while scattering in bulk states is still possible, at least no energy will be lost to it. 
   \item Atoms should be much more concentrated in the transverse direction, significantly increasing the probability of collision. In CBF, the beam cross sections are on the order of $1000~\text{cm}^2$ \cite{blewett197xcbf} (although this is likely much lower with current technology), following a $1/r^2$ relationship \cite{blewett197xcbf} that disperses outward from the aperture. In the proposed design, atoms are confined in low-dimensional modes along the phase transition, following a $e^{-r^2}$ relationship that does not disperse provided it does not scatter into a bulk state (see Appendix \ref{sec:CondMat} for more details).
@@ -174,7 +174,7 @@ The proposed ``Ultracold Fusion'' design is depicted in Fig. \ref{subfig:UCF} --
 
 The design of transport modes most suitable for fusion of ultracold atomic nuclei offers a promising playground to revisit CBF, and potentially circumvent the extreme environments necessary for thermodynamic fusion reactors. Optical lattices provide flexible control over the salient features for fusion -- effective mass, edge mode velocity, spatial confinement in the transverse directions, and band gap energy separation from bulk states. 
 
-Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation, beyond the semiclassical picture. As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility (see Appendix \ref{sec:critvel} for detail). Here, we simply hope to have motivated a promising general framework meriting further exploration, concluding with some open questions:
+Ultimately, the viability of ultracold fusion will depend on estimating fusion and scattering rates as functions of edge mode velocity and bulk band gap separation, beyond the semiclassical picture (see Appendix \ref{sec:scattering} for an initial attempt). As an upper bound, modern laser technology is capable of achieving QSH optical lattices with the same velocity as used in CBF, but would require sub-nm laser wavelengths and approaches the limits of feasibility (see Appendix \ref{sec:critvel} for detail). Here, we simply hope to have motivated a promising general framework meriting further exploration, concluding with some open questions:
 
 \begin{enumerate}
 \item \textit{How does broken spin-rotation symmetry affect the result?} Atoms in the edge modes are spin-momentum locked, i.e. atoms moving clockwise all have the same spin, which is opposite the spin of atoms moving counter-clockwise). Would this have an effect on the scattering trajectory of the resultant high-energy output particles? Practical applications aside, this appears to be a promising environment for probing some unique physics.
@@ -198,7 +198,7 @@ CBF dates back to at least 1973 \cite{MAGLICH1973213}. CBF has been proposed for
 \label{eq:fusionreaction}
 \end{equation}
 
-All numbers are pulled from ref. \cite{blewett197xcbf}. At 100 keV, i.e. when the atoms differ in velocity by $3\times10^6\textrm{m/s}$, the reaction cross section has a max of $\sigma_f \approx 5 \textrm{barns}$ (see Fig. 1 of Maglich et al. \cite{MAGLICH1975IEEE} for a more comprehensive chart of fusion cross section vs. beam energy). Of the 17 MeV of energy produced on the right hand side, 14 MeV resides on the neutron as kinetic energy. Given a beam width cross section of 1000 cm$^2$ and D/T atom concentrations of $6\times10^{18} \textrm{m}^{-3}$, ref. \cite{blewett197xcbf} estimates a fusion yield of 0.65 W per meter of distance along the colliding beams, an extremely poor yield given 60 MW have gone into producing the two colliding beams. Although this naive setup can be improved with magnetic confinement or by recycling the ions in a cylindrical setting to allow multiple opportunities to fuse, the fusion cross section is simply too small relative to the spatial confinement of the beams to ever be viable. Screening and scattering effects further degrade the fidelity of the beams.
+All numbers are pulled from ref. \cite{blewett197xcbf}. At 100 keV, i.e. when the atoms differ in velocity by $3\times10^6\textrm{m/s}$, the reaction cross section has a max of $\sigma_f \approx 5~\textrm{barns}$ (see Fig. 1 of Maglich et al. \cite{MAGLICH1975IEEE} for a more comprehensive chart of fusion cross section vs. beam energy). Of the 17 MeV of energy produced on the right hand side, 14 MeV resides on the neutron as kinetic energy. Given a beam width cross section of 1000 cm$^2$ and D/T atom concentrations of $6\times10^{18}~\textrm{m}^{-3}$, ref. \cite{blewett197xcbf} estimates a fusion yield of 0.65 W per meter of distance along the colliding beams, an extremely poor yield given 60 MW have gone into producing the two colliding beams. Although this naive setup can be improved with magnetic confinement or by recycling the ions in a cylindrical setting to allow multiple opportunities to fuse, the fusion cross section is simply too small relative to the spatial confinement of the beams to ever be viable. Screening and scattering effects further degrade the fidelity of the beams.
 
 
 \section{Topological Order in Condensed Matter}\label{sec:CondMat}
@@ -230,7 +230,7 @@ where $x$ and $y$ are the longitudinal and transverse directions, respectively. 
 \caption{a) Counter-propagating edge modes of opposite spin and linear dispersion are a signature of the Quantum Spin Hall state. Image from \cite{RevModPhys.83.1057}. Red denotes spin-up, blue denotes spin-down. The modes are gapless, yielding quasiparticles with zero effective mass. b) The edge state wave function is exponentially pinned at the phase transition where mass gap $m(y)$ goes from negative to positive. Image from \cite{FRUCHART2013779}.}
 \end{figure}
 
-Two additional traits, not found in CBF, are critical. First, these edge modes are protected from backscattering by time-reversal symmetry; all possible backscattering paths destructively interfere as long as impurities are nonmagnetic \cite{RevModPhys.83.1057}. Second, edge modes have linear dispersion -- electronic quasiparticles are effectively massless and have high velocity (which is proportional to the slope of the dispersion, $v \propto \frac{\delta\epsilon}{\delta k}$) even at low energy. In CBF, a significant amount of energy was needed to create beams with high enough velocity to overcome the Coulomb barrier, much of which was then lost to scattering and screening effects. The same velocity can be realized for low- or zero-energy quasiparticles in these edge states.
+Two additional traits, not found in CBF, are critical. First, these edge modes are protected from backscattering by time-reversal symmetry; all possible backscattering paths destructively interfere as long as impurities are nonmagnetic \cite{RevModPhys.83.1057}. Second, edge modes have linear dispersion -- electronic quasiparticles are effectively massless and have high velocity (which is proportional to the slope of the dispersion, $v \propto \frac{\partial E}{\partial k}$) even at low energy. In CBF, a significant amount of energy was needed to create beams with high enough velocity to overcome the Coulomb barrier, much of which was then lost to scattering and screening effects. The same velocity can be realized for low- or zero-energy quasiparticles in these edge states.
 
 
 \section{Ultracold Atoms and Atomtronics}\label{sec:ColdAtoms}
@@ -313,7 +313,7 @@ which, for an incident particle of energy $E_0$ and a Coulomb potential $V(x)=\f
     \frac{d\psi(x)}{dx} = \frac{i(V_N-E_0)}{\hbar v_F}\frac{\psi(x)}{x}.
 \end{equation}
 
-Noting that the solution to $\frac{dy}{dx}=\frac{Cy}{x}$ is $y(x)=c_1x^{A}$, this yields a quantum tunneling probability,
+Noting that the solution to $\frac{dy}{dx}=\frac{Ay}{x}$ is $y(x)=c_1x^{A}$, this yields a quantum tunneling probability,
 
 \begin{equation}
     \boxed{\psi(x) = x^{i(V_N-E_0)/(\hbar v_F)}}.
@@ -321,8 +321,32 @@ Noting that the solution to $\frac{dy}{dx}=\frac{Cy}{x}$ is $y(x)=c_1x^{A}$, thi
 
 that oscillates in $x$ with a frequency that increases as the particle approaches $x=0$, but \textbf{does not decay into the barrier}. $|\psi(x)|^2$ in this case is a constant value independent of incident energy $E_0$. In the semiclassical limit, atoms counterpropagating along topological edge modes will collide and tunnel with a probability independent of incident energy or velocity. \textit{Is this the right interpretation?}
 
+\section{How to Model Scattering?}\label{sec:scattering}
+
+This section outlines how scattering might be modeled for two edge mode particles approaching one another, and ultimately depends on how scattering changes with respect to band gap energy and Coulomb repulsion.
+
+Because edge mode particles cannot be back-scattered or decelerated, this may be reducible to a single-state Hamiltonian with decay:
+
+\begin{equation}
+\begin{split}
+    \mathcal{H} &= V - \frac{i\Gamma}{2} \\ 
+    &= \frac{E_0-V_N}{x_0 - 2v_0t} - \frac{i\Gamma}{2},
+\end{split}
+\end{equation}
+for a particle in edge mode at energy $E_0$ and velocity $v_0$, approaching a counterpropagating edge particle a distance $x_0$ away at time $t=0$. The factor of 2 on $v_0t$ is due to each particle moving towards one another. $\Gamma$ denotes decay into bulk states due to scattering, and is likely a function of topological band gap energy $E_g$ and potential $V(t)$. 
+
+We want to determine the probability the particle is still in the edge mode, and hasn't scattered out, by the time $x_0-v_0t$ approaches the femtometer scale necessary for nuclear fusion. This is known as the outgoing, time-dependent Green's function \cite{littlejohn2020}:
+
+\begin{equation}
+\langle \psi(t=\frac{v_0}{x_0-1~\textrm{fm}}) \mid \mathcal{U}(t, t') \mid \psi(t'=0) \rangle,
+\end{equation}
+
+where $\mathcal{U}(t,t')$ is the time evolution operator from time $t'$ to $t$. 
+
+If $\Gamma$ is time-independent, the probability of the edge mode scattering before it reaches a distance where fusion can occur, this amounts to a decay rate of $e ^{-\Gamma t}$, but doesn't capture how scattering changes when the edge mode particle's potential increases as it approaches the counterpropagating particle. \textit{How should $\Gamma$ be modified to account for higher scattering rates at higher potential? Does scattering follow a $\Gamma \sim e^{-E_g}$ relation?}
+
+
+
 \end{appendices}
-
-
 
 \end{document}
